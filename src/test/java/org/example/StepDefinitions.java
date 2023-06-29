@@ -17,5 +17,6 @@ public class StepDefinitions {
         chromeOptions.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get(url);
+        driver.quit();
     }
 }
