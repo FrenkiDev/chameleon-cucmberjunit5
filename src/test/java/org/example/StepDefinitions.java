@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class StepDefinitions {
 
-    @Given("открыта страница по адресу {string}")
+    @Given("Не QualIT открыта страница по адресу {string}")
     public void anExampleScenario(String url) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
