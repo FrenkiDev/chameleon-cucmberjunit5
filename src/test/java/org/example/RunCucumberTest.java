@@ -18,7 +18,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @ContextConfiguration("classpath:spring.xml")
 @TestExecutionListeners(inheritListeners=false, listeners={DependencyInjectionTestExecutionListener.class})
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty,summary,io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ru.ibsqa.qualit")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ru.ibsqa.qualit, org.example")
 @ConfigurationParameter(key = PLUGIN_PUBLISH_QUIET_PROPERTY_NAME, value = "true")
 @ConfigurationParameter(key = PLUGIN_PUBLISH_ENABLED_PROPERTY_NAME, value = "true")
 @ConfigurationParameter(key = PARALLEL_EXECUTION_ENABLED_PROPERTY_NAME, value = "true")
