@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Авторизация">
+        <Page name="Вход в систему">
+            <Button name="Войти" isLoaded="true"/>
+            <TextInput name="Логин"/>
+            <TextInput name="Пароль"/>
+            <StaticText name="Заголовок" locator="//*[@id='signin']/h2" isLoaded="true"/>
+            <CheckBox name="Запомнить меня"/>
+        </Page>
+    </Page>
+    <Page name="Страница_Бюджетирование" locator="//*[contains(@class,'ant-tabs-tabpane-active')]">
+        <Page name="Тултип">
+            <StaticText
+                    locator="//*[contains(@class,'ant-tooltip-placement-top') and not(contains(@class,'hidden'))]//*[@role='tooltip']"
+                    name="Сообщение тултипа"/>
+        </Page>
+        <Page name="Верхняя_боковая_панель_подключения к серверу">
+            <Button name="setting" template="Кнопка_arialabel"/>
+            <TextInput name="Выберите схему" template="Поле_Ввода_с_Выпадающим_Списком"/>
+            <Button name="Выбранная схема"
+                    locator="//*[@class=&quot;ant-select-selector&quot;]/descendant::*[contains(text(),'#{имя схемы}')]"/>
+            <Button name="Новая схема" locator="//*[contains(@class, 'btn') and descendant::*[text()='Новая схема']]"/>
+            <Button name="Отсоединить от схемы"
+                    locator="//*[contains(@class,'schemaSelect')]//*[contains(@class,'ant-select-clear')]"
+            />
+            <Collection name="Выпадающий список схем"
+                        locator="descendant::*[contains(@class,'dropdown-placement-bottomLeft') and  descendant::button]//*[contains(@class,'option-content')]">
+                <Button name="Удалить схему" locator=".//following-sibling::*"/>
+                <StaticText locator=".//*[contains(@class,'schemaOption') and text()]" name="Имя схемы"/>
+            </Collection>
+            <StaticText name="Нет схемы для выбора" locator="//*[text()='Нет схемы для выбора']"/>
+        </Page>
+        <Page name="Боковая панель_Справочники|Формы">
+            <Collection name="Блок_Боковой панели"
+                        locator="//*[contains(@class,&quot;ant-collapse-item&quot;) and .//*[contains(text(),'#{имя блока}')]]">
+                <StaticText name="Конкретный справочник" locator="//*[text()='#{имя справочника}']" waitTimeOut="1"/>
+                <Button name="plus" template="Кнопка_arialabel"/>
+                <Button name="reload" template="Кнопка_arialabel"/>
+                <TextInput name="Фильтр" template="Поле_Ввода_По_Placeholder"/>
+                <StaticText name="Заголовок" locator=".//*[contains(@class,'sidebar-header__headerTitle')]"/>
+                <StaticText locator="//*[contains(@class,'dataEmpty')]" name="Сообщение об отсутствии данных"/>
+                <Button locator="//*[contains(@class,'ant-collapse-header') and @role='button']" name="Свернуть блок"/>
+                <StaticText name="Оповещение о необходимости выбора схемы" locator="//*[@class='ant-alert-message']"/>
+                <Button name="table" template="Кнопка_arialabel"/>
+                <StaticText name="Конкретный атрибут куб" locator="//*[text()='#_#{имя куба}']" waitTimeOut="1"/>
+                <StaticText name="Конкретный юзер куб" locator="//*[text()='#{имя куба}']" waitTimeOut="2"/>
+                <Button name="Сбросить фильтр" locator='.//*[@aria-label="close-circle"]'/>
+            </Collection>
+        </Page>
+    </Page>
+    <Page name="Модальное окно_Создание Куба" locator="descendant::*[contains(@class,'cube-modal')]">
+        <Button name="close" template="Кнопка_arialabel"/>
+        <TextInput locator=".//input[@placeholder='Фильтр']" name="Фильтр"/>
+        <StaticText locator="//*[contains(@class,'dataEmpty')]" name="Сообщение об отсутствии данных"/>
+        <StaticText name="Конкретный справочник" locator=".//*[text()='#{имя справочника}']" waitTimeOut="1"/>
+        <Button name="Сбросить фильтр" locator='.//*[@aria-label="close-circle"]'/>
+        <TextInput name="Название куба"
+                   locator=".//*[contains(normalize-space(text()),'Название куба:')]/following-sibling::input"/>
+        <Button name="Отмена"
+                locator=".//*[@type='button' and descendant::*[contains(text(),'Отмена')]]"/>
+        <Button name="Сохранить и открыть"
+                locator=".//*[@type='button' and descendant::*[contains(text(),'Сохранить и открыть')]]"/>
+        <Button
+                locator="//*[contains(@class,'cube-modal__#{часть таблицы}')]//*[contains(text(),'#{текст в поле}')]"
+                name="Перетянутое измерение"/>
+        <Button
+                locator="//*[contains(@class,'cube-modal__#{часть таблицы}')]//*[@aria-label='close']"
+                name="Удалить измерение из области куба"/>
+        <TextInput name="Показатели"
+                   locator=".//*[@type='search']"/>
+        <Collection name="Добавленные показатели"
+                    locator="//*[contains(@class,'cubeRows')]//*[contains(@class,'ant-card-small')]">
+            <StaticText name="Имя показателя" locator=".//*[text() and contains(@class,'item-content')]"/>
+            <StaticText name="Заголовок" locator="//*[text()='#{имя}']"/>
+            <Button name="Удалить показатель"
+                    locator="//*[text()='#{имя}']/following-sibling::*[//@aria-label='close']"/>
+        </Collection>
+        <StaticText name="Перетягиваемое измерение"
+                    locator="descendant::*[contains(@class,'cube-modal')]//*[contains(@class,'budget-panel__title') and text()='#{имя}']"/>
+        <TextInput name="Область для перетягиваемых элементов"
+                   locator="//*[contains(@class,'cube-modal__'#{вымя}')]/div[last()]"/>
+    </Page>
+    <Page name="Конкретный Куб">
+        <StaticText name="Нет данных" locator="descendant::*[contains(@id,'#{имя подвкладки}')]//*[text()='Нет данных']"
+                    waitTimeOut="1"/>
+        <Page name="Внутренняя_вкладкa_Элементы"
+              locator="//*[@aria-hidden=&apos;false&apos; and @role=&apos;tabpanel&apos;]">
+            <Collection name="Табличное представление куба"
+                        locator="descendant::*[@role='tabpanel' and contains(@class,'tabContent') and not (contains(@style,'display: none;'))]//table/tbody/tr">
+                <StaticText name="Заголовок первого столбца" locator="./td[1]"/>
+                <StaticText name="Заголовок второго столбца" locator="./td[2]"/>
+                <StaticText name="Заголовок третьего столбца" locator="./td[3]"/>
+                <StaticText name="Заголовок четвертого столбца" locator="./td[4]"/>
+            </Collection>
+            <Page name="Блок фильтрации по элементам измерения"
+                  locator="descendant::*[@role='tabpanel' and contains(@class,'tabContent') and not (contains(@style,'display: none;'))]//*[contains(@class,'dropdown-control__container')]">
+                <StaticText name="Заголовок блока фильтрации" locator=".//h2"/>
+            </Page>
+        </Page>
+        <Page name="Внутренняя_вкладкa_Правила">
+            <Collection name="Строка таблицы во вкладке Правила"
+                        locator="descendant::*[@role=&apos;tabpanel&apos; and contains (@id,&apos;panel-RULES&apos;)]//tbody/tr">
+                <StaticText name="Ячейка столбца Правило" locator="./td[5]"/>
+                <CheckBox name="Отметить конкретный" locator=".//td[1]//*[input]"/>
+                <StaticText name="Ячейка столбца Порядок" locator="./td[3]//*[text()]"/>
+                <StaticText name="Ячейка столбца Комментарий" locator="./td[6]//*[text()]"/>
+                <TextInput name="Поле ввода ячейки столбца Порядок" locator="./td[3]//input"/>
+                <Button name="Удалить" locator=".//button[contains(@class,'dangerous')]"/>
+                <CheckBox locator="./td[4]//input/.." name="Активно"/>
+                <Button name="Редактировать"
+                        locator=".//button[contains(@class,'dangerous')]/preceding-sibling::button"/>
+            </Collection>
+            <Collection name="Строка заголовков таблицы"
+                        locator="descendant::*[contains (@id,'panel-#{имя внутренней вкладки}') and @aria-hidden=&quot;false&quot;]//thead/tr">
+                <StaticText name="Столбец №1" locator="./th[2]
+"/>
+                <StaticText name="Столбец №2" locator="./th[3]
+"/>
+                <StaticText name="Столбец №3" locator="./th[4]
+"/>
+                <StaticText name="Столбец №4" locator="./th[5]
+"/>
+                <StaticText name="Столбец №5" locator="./th[6]
+"/>
+                <StaticText name="Столбец №6" locator="./th[7]
+"/>
+                <StaticText name="Столбец №7" locator="./th[8]
+"/>
+                <StaticText name="Столбец №8" locator="./th[9]
+"/>
+                <StaticText name="Столбец №9" locator="./th[10]
+"/>
+                <StaticText name="Столбец №10" locator="./th[11]
+"/>
+                <StaticText name="Столбец №11" locator="./th[12]
+"/>
+                <CheckBox name="Отметить все" locator=".//th[1]/descendant::*[@class=&quot;ant-checkbox-input&quot;]"
+                          customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+                <StaticText name="Столбец №0" locator="./th[1]
+"/>
+                <Button name="Кнопка поиска по конкретному столбцу"
+                        locator="./th[descendant::*[text()='#{имя столбца}']]//*[@role='button']"/>
+
+                <Button name="Сортировка"
+                        locator=".//*[contains(@class,'ant-table-column-sorters') and descendant::*[text()='#{имя столбца}']]"/>
+            </Collection>
+        </Page>
+        <Page name="Внутренняя_вкладкa_Показатели">
+            <Collection name="Строка таблицы во вкладке Показатели"
+                        locator="descendant::*[@role=&apos;tabpanel&apos; and contains (@id,&apos;panel-INDICATORS&apos;)]//tbody/tr">
+                <CheckBox name="Отметить конкретный" locator="./td[1]//*[input]"/>
+                <StaticText name="Ячейка столбца Показатель" locator="./td[2]"/>
+                <TextInput name="Ячейка столбца Тип" locator="./td[3]//input"/>
+                <Button name="Редактировать" locator="./td[3]//button"/>
+            </Collection>
+            <Collection name="Строка заголовков таблицы"
+                        locator="descendant::*[contains (@id,&apos;panel-#{имя внутренней вкладки}&apos;) and @aria-hidden=&quot;false&quot;]//thead/tr">
+                <StaticText name="Столбец №2" locator="./th[2]"/>
+                <StaticText name="Столбец №3" locator="./th[3]"/>
+                <CheckBox name="Отметить все" locator=".//th[1]/descendant::*[@class=&quot;ant-checkbox-input&quot;]"
+                          customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+                <StaticText name="Столбец №1" locator="./th[1]"/>
+            </Collection>
+            <Page name="Модальное окно_Показатель">
+                <StaticText name="Заголовок окна редактирования типа показателя"
+                            locator="descendant::*[@class=&quot;ant-modal-content&quot; and .//*[contains(text(),&quot;Показатель: #{имя}&quot;)]]"/>
+                <Button name="Тип списка" locator="./descendant::*[contains (@class,&quot;ant-radio-button-wrapper&quot;) and contains (descendant::text(),'#{имя}')]"/>
+                <StaticText name="Ячейка Элементы" locator="./descendant::*[contains (@class, &quot;ant-legacy-form-item&quot;) and descendant::text()='Элементы']//input//ancestor::div[4]"/>
+                <TextInput name="Элементы" locator="./descendant::*[contains (@class, &quot;ant-legacy-form-item&quot;) and descendant::text()='Элементы']//input"/>
+                <ComboBox name="Редактирование типа показателя" locator="./descendant::*[@class= 'ant-legacy-form-item-control']"/>
+                <Collection
+                        locator="//*[contains(@class,&quot;ant-select-dropdown&quot;) and not(contains(@class,'ant-select-dropdown-hidden'))]"
+                        name="Развернутый список выбора">
+                    <Button locator=".//*[(@title or contains(@class,'empty-description')) and descendant::text()='#{имя}']" name="Опция"/>
+                </Collection>
+            </Page>
+        </Page>
+        <Collection name="Кнопки переключения внутренних вкладок" locator="//*[contains(@class,'ant-tabs-left')]">
+            <Button name="Имя вкладки" locator="//*[text()='#{имя}']"/>
+        </Collection>
+    </Page>
+    <Page name="Конкретный справочник">
+        <Block name="Тултип"/>
+        <StaticText name="Нет данных" locator="descendant::*[contains(@id,'#{имя подвкладки}')]//*[text()='Нет данных']"
+                    waitTimeOut="1"/>
+        <Collection name="Таблица Элементы"
+                    locator="descendant::*[@role='tabpanel' and contains (@id,'panel-ELEMENTS')]//tbody/tr[not(contains(@aria-hidden,'true'))]">
+            <StaticText name="Элемент" locator="./td[2]"/>
+        </Collection>
+        <Collection name="Таблица Атрибуты"
+                    locator="descendant::*[@role='tabpanel' and contains (@id,'panel-ATTRIBUTES')]//tbody/tr[not(contains(@aria-hidden,'true'))]">
+            <StaticText name="Атрибут" locator="./td[3]"/>
+        </Collection>
+        <Collection
+                locator="descendant::*[@role=&apos;tabpanel&apos; and contains (@id,&apos;panel-ELEMENTS&apos;)]//tbody/tr[not(contains(@aria-hidden,'true'))]"
+                name="Строка таблицы во вкладке Элементы">
+            <StaticText name="Ячейка столбца Элемент" locator="./td[2]"/>
+            <CheckBox name="Отметить конкретный" locator=".//td[1]//*[input]"/>
+            <ComboBox name="Тип элемента" locator="./td[3]//span[@title]"/>
+            <StaticText name="Ячейка столбца Позиция" locator="./td[5]//*[text()]"/>
+            <TextInput name="Поле ввода ячейки столбца Позиция" locator="./td[5]//input"/>
+            <StaticText name="Количество детей элемента" locator="./td[11]//*[text()]"/>
+            <TextInput name="Имя элемента" locator="./td[2]//input"/>
+            <Button name="Удалить родительский элемент"
+                    locator="./td[6]//*[contains(@class,'item-remove') and preceding-sibling::*[text()='#{имя удаляемого элемента}']]"/>
+            <Button name="Действие со строкой" locator=".//button[@aria-label='#{действие}']"/>
+            <StaticText name="Вес элемента" locator="./td[4]//*[text()]"/>
+            <Button name="Ячейка столбца Родитель" locator="./td[6]//*[@theme]"/>
+            <TextInput name="Имя родительского элемента" locator="./td[6]//*[text()='#{имя}']" waitTimeOut="2"/>
+            <TextInput name="Имя родительского элемента Rolap" locator="./td[text()='#{имя}']" waitTimeOut="2"/>
+            <StaticText name="Количество родителей" locator="./td[12]//*[text()]"/>
+            <StaticText name="Количество детей" locator="./td[11]//*[text()]"/>
+            <StaticText name="Глубина" locator="./td[10]//*[text()]"/>
+            <StaticText name="Уровень" locator="./td[8]//*[text()]"/>
+            <Button name="edit" template="Кнопка_arialabel"/>
+        </Collection>
+        <Collection
+                locator="//*[contains(@class,&quot;ant-select-dropdown&quot;) and not(contains(@class,'ant-select-dropdown-hidden'))]"
+                name="Развернутый список выбора">
+            <Button locator="descendant::*[@title='#{имя}']" name="Опция"/>
+        </Collection>
+        <Collection
+                locator="//*[contains(@class,&quot;ant-select-dropdown&quot;) and not(contains(@class,'ant-select-dropdown-hidden'))]//*[@title]"
+                name="Опции развернутого список выбора">
+            <Button locator=".//*[text()]" name="Опция"/>
+        </Collection>
+        <Collection name="Строка заголовков таблицы"
+                    locator="descendant::*[contains (@id,'panel-#{имя внутренней вкладки}') and @aria-hidden=&quot;false&quot;]//thead/tr">
+            <StaticText name="Столбец №1" locator="./th[2]
+"/>
+            <StaticText name="Столбец №2" locator="./th[3]
+"/>
+            <StaticText name="Столбец №3" locator="./th[4]
+"/>
+            <StaticText name="Столбец №4" locator="./th[5]
+"/>
+            <StaticText name="Столбец №5" locator="./th[6]
+"/>
+            <StaticText name="Столбец №6" locator="./th[7]
+"/>
+            <StaticText name="Столбец №7" locator="./th[8]
+"/>
+            <StaticText name="Столбец №8" locator="./th[9]
+"/>
+            <StaticText name="Столбец №9" locator="./th[10]
+"/>
+            <StaticText name="Столбец №10" locator="./th[11]
+"/>
+            <StaticText name="Столбец №11" locator="./th[12]
+"/>
+            <CheckBox name="Отметить все" locator=".//th[1]/descendant::*[@class=&quot;ant-checkbox-input&quot;]"
+                      customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+            <StaticText name="Столбец №0" locator="./th[1]
+"/>
+            <Button name="Кнопка поиска по конкретному столбцу"
+                    locator="./th[descendant::*[text()='#{имя столбца}']]//*[@role='button']"
+                    customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+
+            <Button name="Сортировка"
+                    locator=".//*[contains(@class,'ant-table-column-sorters') and descendant::*[text()='#{имя столбца}']]"/>
+        </Collection>
+        <Collection name="Кнопки переключения внутренних вкладок"
+                    locator="//*[contains(@class,'ant-tabs-nav-list') and ancestor::*[contains(@class,'left')]]">
+            <Button name="Имя вкладки" locator="//*[contains(@class,'ant-tabs-tab') and ./*[text()='#{имя}']]"/>
+        </Collection>
+        <Collection name="Строка таблицы во вкладке Данные"
+                    locator="descendant::*[@role='tabpanel' and contains (@id,'panel-DATA')]//*[contains(@class,'master')]//tbody//tr">
+            <TextInput locator="./td[1]" name="Значение в ячейке столбца №1"/>
+            <TextInput locator="./td[2]" name="Значение в ячейке столбца №2"/>
+            <TextInput locator="./td[3]" name="Значение в ячейке столбца №3"/>
+        </Collection>
+        <Collection name="Строка таблицы во вкладке Атрибуты"
+                    locator="descendant::*[@role=&apos;tabpanel&apos; and contains (@id,&apos;panel-ATTRIBUTE&apos;)]//tbody/tr">
+            <StaticText name="Ячейка столбца Атрибут" locator="./td[3]"/>
+            <ComboBox name="Ячейка столбца Тип" locator="./td[4]//*[@value]"/>
+            <ComboBox name="Кнопка выбора Типа" locator="./td[4]//*[@value]/following-sibling::button"/>
+            <TextInput name="Имя атрибута" locator="./td[3]//input"/>
+            <CheckBox name="Отметить конкретный" locator=".//td[1]//*[input]"/>
+            <Button locator=".//button[contains(@class,'dangerous')]" name="Удалить"/>
+            <StaticText name="Ячейка столбца ID" locator="./td[2]//*[text()]"/>
+            <StaticText name="Ячейка столбца Позиция" locator="./td[5]//*[text()]"/>
+            <TextInput name="Поле ввода ячейки столбца Позиция" locator="./td[5]//input"/>
+        </Collection>
+        <Collection name="Содержимое подвкладки Общее"
+                    locator="descendant::*[@role='tabpanel' and contains (@id,'panel-GENERAL')]">
+            <TextInput name="Поле ввода"
+                       locator=".//label[normalize-space(text())='#{имя}']/../following-sibling::*//input"/>
+            <TextInput locator=".//label[normalize-space(text())='Уровень']/../following-sibling::*//input/.."
+                       name="Уровень"
+            />
+            <TextInput name="Область ввода"
+                       locator=".//label[normalize-space(text())='#{имя}']/../following-sibling::*//textarea"/>
+            <Button template="Кнопка_ID" name="hierarchy"/>
+            <StaticText name="Подсказка пользователя" locator="//*[@role='alert' and text()]"/>
+        </Collection>
+    </Page>
+    <Page name="Модальное окно_Новые элементы справочника"
+          locator="descendant::*[@class='ant-modal-content' and .//*[contains(text(),'Новые элементы справочника')]]">
+        <Button name="Подтверждение"
+                locator="descendant::button[descendant::text()='#{имя}']"/>
+        <TextInput locator=".//textarea[not(@id)]" name="Область ввода текста"/>
+    </Page>
+    <Page name="Модальное окно_Добавление правил"
+          locator="descendant::*[@class='ant-modal-content' and .//*[contains(text(),'Создание')]]">
+        <Collection name="Подсказки для написания правил" locator=".//*[@aria-label='Completions']//*[@role='option']">
+            <Button name="Опция" locator="./*[contains(@class,'completionLabel')]"/>
+        </Collection>
+        <TextInput locator=".//label[normalize-space(text())='#{лейбл}']/../following-sibling::*//*[@class='cm-activeLine cm-line']"
+                   name="Нумерованная строка ввода"/>
+        <Collection name="Параметры нумерованной строки ввода" locator="//*[@class='cm-activeLine cm-line']/*[@class and text()]">
+            <StaticText name="Параметр строки" locator="./."/>
+        </Collection>
+        <StaticText name="Заголовок" locator="descendant::*[contains(@class,'title')]"/>
+        <Button name="Подтверждение"
+                locator="descendant::button[descendant::text()='#{имя}']"/>
+        <TextInput locator=".//label[normalize-space(text())='#{имя}']/../following-sibling::*//textarea"
+                   name="Область ввода"/>
+    </Page>
+    <Page name="Модальное окно_Консолидация элементов"
+          locator="descendant::*[@class='ant-modal-content' and .//*[contains(text(),'Список Консолидации')]]">
+        <Collection name="Таблица Все элементы"
+                    locator=".//*[contains(@class,'allElements')]//table//tbody//tr[not(contains(@aria-hidden,'true'))]">
+            <StaticText name="Имя элемента" locator="./td[3]"/>
+
+        </Collection>
+        <Collection locator="//*[contains(@class,'modalElementsHierarchy')]"
+                    name="Контент блоков_Все Элементы|Список Консолидации">
+            <Button name="Сортировка" locator="//*[@aria-label='sort-ascending']"/>
+            <Button name="Выбрать элементы" locator=".//button[descendant::*[@aria-label='right']]"
+            />
+            <StaticText name="Заголовок блока" locator="//*[contains(@class,'topPanelTitle')]"/>
+            <CheckBox name="Выбрать все элементы" locator="//*[contains(@class,'#{имя блока}')]//th[1]"/>
+            <CheckBox name="Выбрать конкретный элемент"
+                      locator="//*[contains(@class,'#{имя блока}')]//tr/td[text()='#{имя элемента}']/preceding-sibling::td[2]"/>
+            <CheckBox name="Выбрать конкретный элемент Rolap"
+                      locator="//*[contains(@class,'#{имя блока}')]//tr/td[text()='#{имя элемента}']/preceding-sibling::td[1]"/>
+            <StaticText name="Нет данных" locator="//*[contains(@class,'#{имя блока}')]//*[text()='Нет данных']"/>
+            <Button name="close-circle" template="Кнопка_arialabel"/>
+            <Button name="up" template="Кнопка_arialabel"/>
+            <Button name="down" template="Кнопка_arialabel"/>
+            <StaticText name="Выбранный элемент"
+                        locator="//tr[1]/td[text()]"/>
+            <Button template="Кнопка_arialabel" name="sort-descending"/>
+            <Button name="sort-ascending" template="Кнопка_arialabel"/>
+
+        </Collection>
+        <Collection name="Консолидируемые элементы"
+                    locator="//*[contains(@class,'#{имя блока}')]//table/#{часть таблицы}/tr">
+            <StaticText locator="./td[3]" name="Элемент"/>
+            <StaticText name="Вес" locator="./td[4]//input"/>
+        </Collection>
+        <Collection name="Консолидируемые элементы ROLAP"
+                    locator="//*[contains(@class,'#{имя блока}')]//table/#{часть таблицы}/tr">
+            <StaticText locator="./td[2]" name="Элемент"/>
+        </Collection>
+        <Button name="Подтверждение" locator="descendant::button[descendant::text()='#{имя}']"/>
+        <Button name="close" template="Кнопка_arialabel"/>
+        <TextInput name="Поле фильтрации"
+                   locator=".//input[@type='text']"/>
+        <StaticText name="Заголовок модального окна" locator=".//*[@class=&quot;ant-modal-title&quot;]"/>
+    </Page>
+    <Page name="Справочники">
+        <Block name="Тултип"/>
+        <Collection name="Строка заголовков таблицы" locator="descendant::*//thead/tr">
+            <StaticText name="Столбец №1" locator="./th[2]"/>
+            <StaticText name="Столбец №2" locator="./th[3]"/>
+            <StaticText name="Столбец №3" locator="./th[4]"/>
+            <StaticText name="Столбец №4" locator="./th[5]"/>
+            <StaticText name="Столбец №5" locator="./th[6]"/>
+            <StaticText name="Столбец №6" locator="./th[7]"/>
+            <StaticText name="Столбец №7" locator="./th[8]"/>
+            <StaticText name="Столбец №8" locator="./th[9]"/>
+            <StaticText name="Столбец №9" locator="./th[10]"/>
+            <StaticText name="Столбец №10" locator="./th[11]"/>
+        </Collection>
+        <Collection name="Таблица" locator="//table//tbody//tr[not(contains(@aria-hidden,'true'))]">
+            <StaticText name="ID" locator="./td[2]"/>
+            <StaticText name="Внешний ИД измерения" locator="./td[3]"/>
+            <StaticText name="Наименование" locator="./td[4]"/>
+            <StaticText name="Бизнес наименование" locator="./td[5]"/>
+            <StaticText name="Атрибуты" locator="./td[6]"/>
+            <StaticText name="Комментарий" locator="./td[8]"/>
+            <StaticText name="Дата создания" locator="./td[9]"/>
+            <StaticText name="Дата обновления" locator="./td[10]"/>
+        </Collection>
+        <Collection
+                locator="descendant::*[@role='tabpanel' and @aria-hidden='false']//table/tbody/tr[not(contains(@aria-hidden,'true'))]"
+                name="Строка таблицы во вкладке Справочники">
+            <StaticText locator="./td[4]" name="Ячейка столбца Наименование"/>
+            <Button locator=".//button[contains(@class,'dangerous')]/preceding-sibling::button" name="Редактировать"/>
+            <Button name="Удалить" locator=".//button[contains(@class,'dangerous')]"/>
+            <StaticText name="Бизнес наименование" locator="./td[5]"/>
+            <StaticText name="Комментарий" locator="./td[8]"/>
+            <CheckBox name="Ограниченный доступ" locator="//*[contains(@class,'ant-checkbox-checked')]"/>
+            <CheckBox name="Выбрать конкретный" locator=".//td[1]//*[input]"/>
+            <StaticText name="Ячейка столбца Внешний ИД измерения" locator="./td[3]"/>
+            <StaticText name="Ячейка столбца UUID" locator="./td[2]"/>
+            <StaticText name="Ячейка столбца ID" locator="./td[3]"/>
+            <StaticText name="Ячейка столбца Дата создания" locator="./td[9]"/>
+        </Collection>
+        <Collection name="Заголовки таблицы Справочников" locator="descendant::*[@role='tabpanel']//table/thead/tr">
+            <Button name="Кнопка поиска по конкретному столбцу"
+                    locator="./th[descendant::*[text()='#{имя столбца}']]//*[@role='button']"
+                    customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+            <Button name="Сортировка"
+                    locator=".//*[text()='#{имя столбца}']"/>
+
+            <CheckBox name="Отметить все" locator=".//th[1]/descendant::*[@class=&quot;ant-checkbox-input&quot;]"
+                      customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+        </Collection>
+    </Page>
+    <Page name="Формы">
+        <Block name="Тултип"/>
+        <Collection name="Строка заголовков таблицы" locator="descendant::*//thead/tr">
+            <StaticText name="Столбец №1" locator="./th[2]"/>
+            <StaticText name="Столбец №2" locator="./th[3]"/>
+            <StaticText name="Столбец №3" locator="./th[4]"/>
+            <StaticText name="Столбец №4" locator="./th[5]"/>
+            <StaticText name="Столбец №5" locator="./th[6]"/>
+            <StaticText name="Столбец №6" locator="./th[7]"/>
+            <StaticText name="Столбец №7" locator="./th[8]"/>
+            <StaticText name="Столбец №8" locator="./th[9]"/>
+            <StaticText name="Столбец №9" locator="./th[10]"/>
+            <StaticText name="Столбец №10" locator="./th[11]"/>
+        </Collection>
+        <Collection name="Таблица" locator="//table//tbody//tr[not(contains(@aria-hidden,'true'))]">
+            <StaticText name="ID" locator="./td[2]"/>
+            <StaticText name="Наименование" locator="./td[3]"/>
+            <StaticText name="Приложение" locator="./td[4]"/>
+            <StaticText name="Измерения" locator="./td[5]"/>
+            <StaticText name="Breakback" locator="./td[6]"/>
+            <StaticText name="Ограниченный доступ" locator="./td[7]"/>
+            <StaticText name="Комментарий" locator="./td[8]"/>
+            <StaticText name="Дата создания" locator="./td[9]"/>
+            <StaticText name="Дата обновления" locator="./td[10]"/>
+        </Collection>
+        <Collection name="Строка таблицы во вкладке Формы" locator="descendant::*[@role='tabpanel']//table/tbody/tr">
+            <StaticText name="Ячейка столбца Наименование" locator="./td[3]"/>
+            <Button name="Редактировать" locator=".//button[contains(@class,'dangerous')]/preceding-sibling::button"/>
+            <Button name="Удалить" locator=".//button[contains(@class,'dangerous')]"/>
+            <StaticText name="Ячейка столбца UUID" locator="./td[2]"/>
+            <StaticText name="Комментарий" locator="./td[8]"/>
+            <StaticText name="Наименование" locator="./td[3]"/>
+            <CheckBox name="Ограниченный доступ" locator="//*[contains(@class,'ant-checkbox-checked')]"/>
+            <CheckBox name="Выбрать конкретный" locator=".//td[1]//*[input]"/>
+            <StaticText name="Ячейка столбца Дата создания" locator="./td[9]"/>
+        </Collection>
+        <Collection name="Заголовки таблицы Форм" locator="descendant::*[@role='tabpanel']//table/thead/tr">
+            <Button name="Кнопка поиска по конкретному столбцу"
+                    locator="./th[descendant::*[text()='#{имя столбца}']]//*[@role='button']"
+                    customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+            <CheckBox name="Отметить все" locator=".//th[1]/descendant::*[@class=&quot;ant-checkbox-input&quot;]"
+                      customType="ru.ibs.planeta.ui.steps.facade.JSClick"/>
+            <Button name="Сортировка"
+                    locator=".//*[text()='#{имя столбца}']"/>
+        </Collection>
+        <Button name="Пагинация Вперед"
+                locator="//li[contains(@class, 'pagination-next') and @aria-disabled='false']/*"/>
+        <StaticText locator="//td[text()='#{имя}']" name="Маячок нужной страницы"/>
+    </Page>
+    <Page name="Модальное окно_Новые атрибуты справочника"
+          locator="descendant::*[@class='ant-modal-content' and .//*[contains(text(),'Новые атрибуты справочника')]]">
+        <Button name="Подтверждение" locator="descendant::button[descendant::text()='#{имя}']"/>
+        <TextInput name="Область ввода текста" locator=".//textarea[not(@id)]"/>
+    </Page>
+</Pages>

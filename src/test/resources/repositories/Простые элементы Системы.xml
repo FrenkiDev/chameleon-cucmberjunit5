@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Templates xmlns="http://chameleon.ibs-qa.ru/schema/templates">
+    <Template name="Поле_Ввода_По_Имени_Label"
+              locator="//*[contains(@class,'item-label') and descendant::text()='%1$s']/following-sibling::*/descendant::input"/>
+    <Template
+            locator='//*[contains(@class,&apos;ant-select-dropdown&apos;) and descendant::*[@role=&apos;listbox&apos;] and descendant::*[contains(@class,&apos;ant-select-item-option&apos;)] and not(contains(@class,&apos;hidden&apos;))]'
+            name="Выпадающий_Список_Выбор_Нескольких+Значений"/>
+    <Template
+            locator="//*[@class='ant-table-filter-column' and descendant::text()='%1$s']//*[@role=&quot;button&quot;]/*[@aria-label=&quot;search&quot;]"
+            name="Фильтр_По_Столбцу"/>
+    <Template name="Link" locator=".//a[normalize-space(text())='%1$s']"/>
+    <Template name="TextInput" locator=".//label[normalize-space(text())='%1$s']/following-sibling::input"/>
+    <Template name="TextInputByLabel" locator="//label[normalize-space(text())='%1$s']/../following-sibling::*//input"/>
+    <Template name="CheckBox" locator=".//input[@type='checkbox' and ./parent::label[normalize-space(text())='%1$s']]"/>
+    <Template name="Поле_Ввода_с_Выпадающим_Списком"
+              locator="//*[./child::*[normalize-space(text())='%1$s']]/descendant::*[@type='search']"/>
+    <Template name="Кнопка_arialabel" locator='descendant::button[descendant::*[@aria-label=&apos;%1$s&apos;]]'/>
+    <Template name="Поле_Ввода_По_Placeholder" locator="descendant::input[@placeholder='%1$s']"/>
+    <Template name="StaticText_analyst" locator="descendant::*[text()='%1$s']"/>
+    <Template name="Button_analyst" locator="descendant::button[descendant::text()='%1$s']"/>
+    <Template name="Кнопка_ID" locator="descendant::button[@id='%1$s']"/>
+    <Template name="Поле ввода по id" locator="descendant::input[@id='%1$s']"/>
+    <Template name="Selector"
+              locator="//label[text()='%1$s']/../following-sibling::*//*[@class='ant-select-selector']"/>
+    <Template name="Выадающий список"
+              locator="descendant::*[contains(@class,'ant-select-dropdown') and not(contains(@class,'hidden'))]/descendant::*[@aria-selected=&quot;false&quot; and *[text()='#{имя}']"/>
+    <Template name="radio"
+              locator="//input[@type='radio' and ancestor::label//*[normalize-space(text())='%1$s']]/.."/>
+</Templates>

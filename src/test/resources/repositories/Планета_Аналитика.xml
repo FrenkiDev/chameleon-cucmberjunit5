@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Страница панели">
+        <Button name="save" template="Кнопка_arialabel"/>
+        <Button name="bars" template="Кнопка_arialabel"/>
+        <Collection name="Разделы инструментов создания панели"
+                    locator="//*[contains(@class,'ant-collapse-item')]">
+            <StaticText locator="descendant::*[contains(@class,'Title')]" name="Заголовок"/>
+            <StaticText name="Признак раскрытия раздела" locator="./div"/>
+            <StaticText name="Элементы внутри разделов" locator="descendant::li[descendant::*[text()='#{имя}']]"/>
+            <TextInput name="Фильтр" template="Поле_Ввода_По_Placeholder"/>
+            <Button name="Очистить фильтр"
+                    locator="descendant::span[@role='button' and @aria-label='close-circle']"/>
+        </Collection>
+        <Collection name="Модели" locator="descendant::*[@class='ant-collapse-header' and descendant::*[text()='Модели']]/../descendant::*[text()]/ancestor::*[contains(@class,'ant-tree-treenode-switcher')]">
+            <Button name="Заголовок" locator="descendant::*[text()]"/>
+            <Button name="Switch"
+                    locator="descendant::*[contains(@class,'switcher') and not(contains(@class,'icon')) and not(contains(@class,'noop'))]"/>
+        </Collection>
+        <Collection name="Виджеты" locator="//*[contains(@class,'db-layout-item')]">
+            <StaticText name="Drag-icon" locator="descendant::*[@title='Перетащить']"/>
+            <Button name="Боковое меню виджета" locator="ancestor::*[contains(@class,'container')]/descendant::button[descendant::*[@aria-label='#{aria-label}']]"/>
+            <StaticText name="Виджет" locator="./../*[contains(@class,'db-layout-item')]"/>
+            <TextInput name="Наименование"/>
+            <Button name="Экспорт" locator="//*[contains(@class,'Export') and not(contains(@class,'Hidden'))]"/>
+            <Button name="Контекстное меню" locator="//li[descendant::text()='#{label}']"/>
+            <StaticText name="Пустой набор данных" locator="//*[text()='#{text}']"/>
+            <StaticText locator="//img[@title='#{title}']" name="Значок фильтра"/>
+        </Collection>
+        <Button name="profile" template="Кнопка_arialabel"/>
+        <Page name="Поля свойств виджета"
+              locator="descendant::*[contains(@class,'ant-card-bordered')]">
+            <TextInput name="Редактор текста" locator="descendant::*[contains(@class,'ql-editor')]"/>
+            <Button name="Выбор"
+                    locator="//label[text()='#{label}']/../following-sibling::*//input[@type='radio' and @value='#{name}']/../.."/>
+            <TextInput name="Поле ввода"
+                       locator="//*[contains(@class,'item-label') and descendant::text()='#{name}']/following-sibling::*/descendant::input"/>
+            <Button name="Кнопка Изменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Изменить']"/>
+            <Button locator="//label[text()='#{label}']/../following-sibling::*//*[contains(@class,'ant-slider-step')]"
+                    name="Слайдер"/>
+            <Button name="Переключатель"
+                    locator="//label[text()='#{label}']/../following-sibling::*//button"/>
+            <Button name="Добавить" template="Button_analyst"/>
+            <Collection name="Элементы в свойствах" locator=".//section[contains(@class,'submenu')]">
+                <Button name="Заголовок" locator=".//*[text()]"/>
+                <Button name="Удалить" locator="//button[@title='Удалить']"/>
+            </Collection>
+            <ComboBox name="Dropdown"
+                      locator="//label[text()='#{label}']/../following-sibling::*//*[@class='ant-select-selector']"
+                      customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+            <Button name="Rudio button" locator="//input[@type='radio' and @value='#{name}']/../.."/>
+            <Button name="Назад" locator=".//button[descendant::*[@aria-label='left']]"/>
+            <Button name="Кнопка" locator="descendant::button[descendant::text()='#{имя}']"/>
+            <Button name="Кнопка Сменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Сменить']"/>
+            <Button name="Изменить запрос"
+                    locator="//*[text()='Запрос']/following-sibling::*//button[descendant::text()='Изменить ']"/>
+            <Button name="Переключатель с текстом"
+                    locator="//label[text()='#{label}']/../following-sibling::*//button[descendant::text()='#{text}']"/>
+        </Page>
+        <Collection name="Показатели"
+                    locator="descendant::*[@class='ant-collapse-header' and descendant::*[text()='Модели']]/../descendant::*[text()]/ancestor::*[contains(@class,'ant-tree-treenode')]">
+            <Button name="Заголовок" locator="descendant::*[text()]"/>
+        </Collection>
+        <Button name="tags" template="Кнопка_arialabel"/>
+        <Page name="Редактор параметров"
+              locator="//*[text()='Редактор параметров']/ancestor::*[@class='ant-modal-content']">
+            <Button name="Добавить" template="Button_analyst"/>
+            <Button name="Удалить" template="Button_analyst"/>
+            <Collection name="Список параметров" locator=".//li">
+                <Button name="Наименование" locator="./span"/>
+            </Collection>
+            <Page name="Форма редактирования"
+                  locator="//*[text()='Редактор параметров']/ancestor::*[@class='ant-modal-content']//form">
+                <TextInput name="Наименование" template="TextInputByLabel"/>
+                <TextInput name="Идентификатор" template="TextInputByLabel"/>
+                <TextInput name="Внешний идентификатор" template="TextInputByLabel"/>
+                <ComboBox name="Тип" template="Selector" customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+                <TextInput name="Значение" template="TextInputByLabel"/>
+                <TextInput name="Сохраненное значение" template="TextInputByLabel"/>
+                <Button locator="//label[normalize-space(text())='Сохранять с панелью']/../following-sibling::*//button"
+                        name="Сохранять с панелью"/>
+                <TextInput name="Формат даты" template="TextInputByLabel"/>
+                <Button name="Подсказка даты" locator="//label[text()='Формат даты']/button"/>
+            </Page>
+            <Button name="close" template="Кнопка_arialabel"/>
+        </Page>
+        <Page name="Доступные форматы даты" locator="descendant::*[@class='ant-popover-inner' and @role='tooltip']">
+            <Collection name="Список форматов" locator=".//tbody/tr">
+                <StaticText name="Название" locator="./td[1]"/>
+                <StaticText name="Формат" locator="./td[2]"/>
+                <StaticText name="Результат" locator="./td[3]"/>
+            </Collection>
+            <Collection name="Поля таблицы" locator=".//thead//th">
+                <StaticText name="Заголовок" locator="descendant-or-self::*"/>
+            </Collection>
+        </Page>
+        <StaticText name="Инструменты создания панели"
+                    locator="//div[text()='Виджеты']/ancestor::div[@class='ant-card-body']"/>
+        <StaticText name="Дашборд" locator="descendant::*[@id='widgetsLayoutContainer']"/>
+        <Button name="edit" template="Кнопка_arialabel"/>
+        <Button name="code" template="Кнопка_arialabel"/>
+        <Page name="Выражения" locator="//*[text()='Выражения']/ancestor::*[@class='ant-modal-content']">
+            <Button name="Добавить" template="Button_analyst"/>
+            <Button name="Удалить" template="Button_analyst"/>
+            <Collection name="Список выражений" locator=".//li">
+                <Button name="Наименование" locator="./span"/>
+            </Collection>
+            <Button name="close" template="Кнопка_arialabel"/>
+            <Page name="Форма редактирования выражений"
+                  locator="//*[text()='Выражения']/ancestor::*[@class='ant-modal-content']//*[starts-with(@class,'detail-view-editor')]">
+                <TextInput name="Наименование" template="TextInputByLabel"/>
+                <TextInput name="Идентификатор" template="TextInputByLabel"/>
+                <CheckBox name="Безопасное выражение"
+                          locator="//input[@type='checkbox' and ancestor::label/descendant::*[text()='Безопасное выражение']]"/>
+            </Page>
+        </Page>
+        <Page name="Настройки фильтрации"
+              locator="//*[@class='ant-modal-content' and descendant::text()='Настройки фильтрации']">
+            <Collection name="Фильтры" locator="//*[contains(@class,'form-regions')]">
+                <ComboBox name="Измерение" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                          template="Selector"/>
+                <ComboBox name="Атрибут" customType="ru.ibs.planeta.ui.webelements.Dropdown" template="Selector"/>
+                <TextInput name="Значение строка" template="TextInputByLabel"/>
+                <ComboBox name="Тип фильтра" customType="ru.ibs.planeta.ui.webelements.Dropdown" template="Selector"/>
+                <Button name="Удалить" template="Button_analyst"/>
+                <CheckBox name="Создать виртуальный элемент"
+                          locator=".//span[text()='Создать виртуальный элемент']/preceding-sibling::*/input[@type='checkbox']/.."/>
+                <Button name="Переключатель" locator=".//button[@role='switch']"/>
+                <ComboBox name="Параметр / Выражение" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                          locator="//label[text()='Параметр / Выражение ']/../following-sibling::*//*[@class='ant-select-selector']"/>
+                <ComboBox name="Значение" customType="ru.ibs.planeta.ui.webelements.Multilist"
+                          template="Selector"/>
+            </Collection>
+            <Button name="Добавить" template="Button_analyst"/>
+            <Button name="Ok" template="Button_analyst"/>
+            <CheckBox name="Применить все"
+                      locator="//label[text()='Применить все']/../following-sibling::*//input[@type='checkbox']/.."/>
+            <Button name="Сбросить выбранные значения" template="Button_analyst"/>
+            <Button name="Выбор"
+                    locator="//label[text()='#{label}']/../following-sibling::*//input[@type='radio' and @value='#{name}']/../.."/>
+            <Button name="Удалить все" template="Button_analyst"/>
+        </Page>
+        <Page name="Свойства виджетов">
+            <Collection name="Свойства" locator="descendant::*[contains(@class,'submenu-item__submenuItem')]">
+                <Button name="Заголовок" locator="descendant::*[text()]"/>
+            </Collection>
+            <CheckBox name="Два значения категории и один показатель" template="radio"/>
+            <TextInput name="Ссылка на изображение"
+                       locator="//input[@type='text' and parent::*/descendant::label[normalize-space(text())='Ссылка на изображение']]"/>
+            <Block name="Поля свойств виджета"/>
+            <Page name="Ось Y" locator="//*[text()='Ось X']/preceding-sibling::*">
+                <Block name="Поля свойств виджета"/>
+            </Page>
+            <Page name="Ось X" locator="//*[text()='Ось X']/following-sibling::*">
+                <Block name="Поля свойств виджета"/>
+            </Page>
+        </Page>
+        <Button name="tool" template="Кнопка_arialabel"/>
+        <Page name="Виджет таблица"
+              locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]//tbody">
+            <Collection name="Строки" locator=".//tr">
+                <StaticText name="Заголовок" locator="./td//span[text()]"/>
+            </Collection>
+        </Page>
+        <Button name="Активный виджет"
+                locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]"/>
+        <Page name="Свойства панели" locator="//*[text()='Свойства панели']/ancestor::*[@class='ant-modal-content']">
+            <Button name="Переключатель" locator="//label[text()='#{label}']/../following-sibling::*//button"/>
+            <Button name="Кнопка Изменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Изменить']"/>
+            <Button name="Кнопка Сменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Сменить']"/>
+            <ComboBox name="Dropdown" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                      locator="//label[text()='#{label}']/../following-sibling::*//*[@class='ant-select-selector']"/>
+            <TextInput name="Поле ввода"
+                       locator="//*[contains(@class,'item-label') and descendant::text()='#{name}']/following-sibling::*/descendant::input"/>
+            <Button name="Ok" template="Button_analyst"/>
+        </Page>
+    </Page>
+    <Page name="Аналитические панели">
+        <TextInput template="Поле_Ввода_По_Placeholder" name="Фильтр"/>
+        <Collection name="Список панелей" locator="descendant::ul[@class='ant-list-items']/li">
+            <Button name="delete" template="Кнопка_arialabel"/>
+            <Button name="edit" template="Кнопка_arialabel"/>
+            <StaticText locator="descendant::a" name="Имя панели"/>
+        </Collection>
+        <StaticText name="Нет данных"/>
+        <Button name="reload" template="Кнопка_arialabel" isLoaded="true"/>
+        <Button name="plus" template="Кнопка_arialabel"/>
+    </Page>
+    <Page name="Источники данных" locator="descendant::*[@role='tabpanel' and not(@aria-hidden='true')]">
+        <Collection name="Список источников данных" locator="//*[@role='tabpanel' and not(@aria-hidden='true')]//tbody/tr[not(@aria-hidden='true')]">
+            <StaticText locator="./td[2]" name="Наименование"/>
+            <StaticText name="Тип БД" locator="./td[3]"/>
+            <StaticText name="URL" locator="./td[4]"/>
+            <StaticText name="Имя пользователя" locator="./td[5]"/>
+            <StaticText name="Пароль (хеш)" locator="./td[6]"/>
+            <Button name="disconnect" template="Кнопка_arialabel"/>
+            <Button name="form" template="Кнопка_arialabel"/>
+            <Button name="delete" template="Кнопка_arialabel"/>
+            <StaticText name="ИД" locator="./td[1]"/>
+        </Collection>
+        <Button name="Создать" template="Button_analyst"/>
+        <TextInput name="name" template="Поле ввода по id"/>
+        <TextInput name="url" template="Поле ввода по id"/>
+        <TextInput name="user" template="Поле ввода по id"/>
+        <TextInput name="password" template="Поле ввода по id"/>
+        <Button name="close" template="Кнопка_arialabel"/>
+        <Button name="save" template="Кнопка_arialabel"/>
+        <StaticText locator="//*[@role='tooltip' and text()='#{имя}']" name="Всплывающая подсказка"/>
+        <StaticText name="Сообщение о незаполненом поле"
+                    locator="descendant::input[@id='#{inputID}']/ancestor::*[contains(@class,'ant-col')]//*[text()='Заполните поле &quot;#{имя}&quot;']"/>
+    </Page>
+    <Page name="Модели" locator="descendant::*[@role='tabpanel' and not(@aria-hidden='true')]">
+        <Collection name="Список моделей" locator="//*[@role='tabpanel' and not(@aria-hidden='true')]//tbody/tr">
+            <StaticText name="Наименование" locator="./td[4]"/>
+            <Button name="form" template="Кнопка_arialabel"/>
+            <Button name="delete" template="Кнопка_arialabel"/>
+        </Collection>
+        <Button name="Создать" template="Button_analyst"/>
+        <TextInput name="name" template="Поле ввода по id"/>
+        <TextInput name="extDbId" template="Поле ввода по id"/>
+        <TextInput name="extDbName" template="Поле ввода по id"/>
+        <TextInput name="extCubeId" template="Поле ввода по id"/>
+        <TextInput name="extCubeName" template="Поле ввода по id"/>
+        <Button name="close" template="Кнопка_arialabel"/>
+        <Button name="save" template="Кнопка_arialabel"/>
+        <Button name="folder" template="Кнопка_arialabel"/>
+        <Button name="plus" template="Кнопка_arialabel"/>
+        <Button name="reload" template="Кнопка_arialabel"/>
+        <TextInput name="Поле ввода uuid редактора" locator="descendant::input[@id='name']/ancestor::tr/td[3]//input"/>
+        <TextInput name="Поле ввода Дата вставки редактора" locator="descendant::input[@id='name']/ancestor::tr/td[10]//input"/>
+        <TextInput name="Поле ввода Дата обновления редактора"
+                   locator="descendant::input[@id='name']/ancestor::tr/td[11]//input"/>
+        <Collection name="Папки в пути" locator="ancestor::*/descendant::*[@class='ant-breadcrumb']/span">
+            <Button name="Переход в папку" locator="./span[contains(@class,'link')]"/>
+        </Collection>
+        <!--        <StaticText name="Начало таблицы" locator="//thead//th[1]"/>-->
+    </Page>
+    <Page name="Импорт модели">
+        <Button name="Выбрать файл"/>
+        <ComboBox name="Лист" template="Selector" customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+        <TextInput name="Левая верхняя ячейка" template="TextInputByLabel"/>
+        <TextInput name="Правая нижняя ячейка" template="TextInputByLabel"/>
+        <Button name="folder" template="Кнопка_arialabel"/>
+        <ComboBox name="Источник данных dropdown" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                  locator="//label[text()='Источник данных']/../following-sibling::*//*[@class='ant-select-selector']"/>
+        <TextInput name="Модель" template="TextInputByLabel"/>
+        <Page name="Блок выбора папки" locator="//label[text()='Загрузить в папку']/../../../..">
+            <Button name="folder" template="Кнопка_arialabel"/>
+        </Page>
+        <TextInput name="Источник данных" template="TextInputByLabel"/>
+        <Collection locator="//*[text()='Столбцы из файла']/..//*[starts-with(@class,'tag-drag-drop-item')]/div"
+                    name="Столбцы из файла">
+            <TextInput name="Имя" locator=".//span[not(@class)]"/>
+            <StaticText name="Элемент для перетаскивания" locator="./span"/>
+        </Collection>
+        <TextInput name="Блок параметров" locator="//*[text()='#{имя}']/following::*[starts-with(@class,'tags-drag-drop')][1]"
+        />
+        <Button name="Загрузить" template="Button_analyst"/>
+        <Button name="unordered-list" template="Кнопка_arialabel"/>
+        <Button name="plus" template="Кнопка_arialabel"/>
+        <ComboBox name="Модель dropdown" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                  locator="//label[text()='Модель']/../following-sibling::*//*[@class='ant-select-selector']"/>
+    </Page>
+    <Page name="Аналитический конструктор">
+        <Page name="Показатели" locator="descendant::*[@class='ant-collapse-header' and descendant::*[text()='Показатели']]/.."
+        >
+            <TextInput name="Фильтр" template="Поле_Ввода_По_Placeholder"/>
+            <Collection name="Модели" locator="descendant::*[@class='ant-collapse-header' and descendant::*[text()='Показатели']]/../descendant::*[text()]/ancestor::*[contains(@class,'ant-tree-treenode')]">
+                <Button name="Заголовок" locator="descendant::*[text()]"/>
+                <Button name="Switch"
+                        locator="descendant::*[contains(@class,'switcher') and not(contains(@class,'icon')) and not(contains(@class,'noop'))]"/>
+            </Collection>
+        </Page>
+        <Collection name="Измерения"
+                    locator="descendant::*[@class='ant-collapse-header' and descendant::*[text()='Измерения']]/../descendant::*[text()]/ancestor::*[contains(@class,'ant-tree-treenode')]">
+            <Button name="Заголовок" locator="descendant::*[text()]"/>
+            <Button name="Switch"
+                    locator="descendant::*[contains(@class,'switcher') and not(contains(@class,'icon')) and not(contains(@class,'noop'))]"/>
+        </Collection>
+        <Button locator="descendant::*[@aria-label='swap']" name="Транспонировать"/>
+        <Button name="profile" template="Кнопка_arialabel"/>
+        <Page name="Таблица" locator="//*[contains(@class,'db-layout-item')]//table">
+            <Collection name="Ячейка" locator=".//td">
+                <StaticText name="Заголовок" locator=".//span[text()]"/>
+            </Collection>
+            <Collection name="Колонки" locator="./colgroup/col"/>
+        </Page>
+    </Page>
+    <Page name="Геосерверы" locator="descendant::*[@role='tabpanel' and not(@aria-hidden='true')]">
+        <Collection name="Список геосерверов" locator="//*[@role='tabpanel' and not(@aria-hidden='true')]//tbody/tr">
+            <StaticText name="Наименование" locator="./td[4]"/>
+            <Button name="form" template="Кнопка_arialabel"/>
+            <Button name="delete" template="Кнопка_arialabel"/>
+        </Collection>
+        <Button name="plus" template="Кнопка_arialabel"/>
+        <Button name="reload" template="Кнопка_arialabel"/>
+        <Button name="download" template="Кнопка_arialabel"/>
+        <Button name="upload" template="Кнопка_arialabel"/>
+        <Button name="delete" template="Кнопка_arialabel"/>
+    </Page>
+    <Page name="Плагины" locator="descendant::*[@role='tabpanel' and not(@aria-hidden='true')]">
+        <Button name="reload" template="Кнопка_arialabel" isLoaded="true"/>
+        <Button name="plus" template="Кнопка_arialabel"/>
+        <Collection name="Список плагинов"
+                    locator="//*[@role='tabpanel' and not(@aria-hidden='true')]//tbody/tr[not(@aria-hidden='true')]">
+            <StaticText name="Наименование" locator="./td[2]"/>
+            <Button name="form" template="Кнопка_arialabel"/>
+            <Button name="delete" template="Кнопка_arialabel"/>
+        </Collection>
+    </Page>
+    <Page name="Персонализация" locator="descendant::*[@role='tabpanel' and not(@aria-hidden='true')]">
+        <Button name="plus" template="Кнопка_arialabel"/>
+        <Button name="save" template="Кнопка_arialabel"/>
+        <Button name="delete" template="Кнопка_arialabel"/>
+        <ComboBox name="Список тем" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                  locator="//*[@class='ant-select-selector']"/>
+        <Button name="Применить тему" template="Button_analyst"/>
+        <Collection name="Настройки темы"
+                    locator=".//*[contains(@class,'theme') and not(contains(@class,'title'))]/div/div[not(@role='separator')]">
+            <StaticText name="Наименование" locator=".//label"/>
+            <Button name="Сменить" locator=".//button"/>
+            <TextInput name="Загрузка файла" locator=".//*[@class='ant-upload']"/>
+            <TextInput name="Ввод заголовка" locator=".//textarea"/>
+        </Collection>
+    </Page>
+</Pages>

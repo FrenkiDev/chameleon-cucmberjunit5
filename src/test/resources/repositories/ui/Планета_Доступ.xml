@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+  <Page name="Страница авторизации">
+    <StaticText locator="descendant::h2['Вы действительно хотите выйти?']"
+      name="Вы действительно хотите выйти"/>
+    <StaticText locator="descendant::*[text()='Планета Доступ']" name="Планета Доступ"/>
+    <StaticText
+      locator="descendant::*[contains(@class,'forbidden-route__container') and *['Отсутствует право доступа']]"
+      name="Отсутствует право доступа"/>
+    <TextInput name="логин" locator='descendant::*[@id="username"]'/>
+    <TextInput name="пароль" locator='descendant::*[@id="password"]'/>
+    <TextInput name="новый пароль" locator='descendant::*[@id="newPassword"]'/>
+    <TextInput name="подтверждение пароля" locator='descendant::*[@id="confirmPassword"]'/>
+    <Button name="войти" locator='descendant::*[@type="submit" and text()="Войти"]'/>
+    <Button locator="descendant::*[@type='button' and 'Выйти из системы']" name="Выйти из системы"/>
+    <Button locator="descendant::*[@type='submit' and 'Выйти']" name="Выйти"/>
+    <Button locator="descendant::*[@type='button' and 'Отмена']" name="Отмена"/>
+    <Button locator="descendant::*[@type='button' and @value='Назад']" name="Назад"/>
+    <StaticText locator="descendant::*[@role=&quot;alert&quot; and '#{text}']"
+      name="Ограничение авторизации"/>
+  </Page>
+  <Page name="Пользователи" locator='//*[@role="tabpanel" and @aria-hidden="false"]'>
+    <Collection name="Список Пользователей"
+      locator="./descendant::tbody/tr[@data-row-key]">
+      <CheckBox name="Чек-бокс" locator="./descendant::label"/>
+      <StaticText name="ИД" locator='./*[2]'/>
+      <StaticText name="Имя пользователя" locator='./*[3]'/>
+      <StaticText name="Телефон" locator='./*[4]'/>
+      <StaticText name="Отчество" locator='./*[5]'/>
+      <StaticText name="Фамилия" locator='./*[6]'/>
+      <StaticText name="Имя" locator='./*[7]'/>
+      <StaticText name="Электронная почта" locator='./*[8]'/>
+      <StaticText name="Должность_1" locator='./*[9]'/>
+      <StaticText name="Должность" locator='./*[10]'/>
+      <StaticText name="Примечание" locator='./*[11]'/>
+      <StaticText name="Организация" locator='./*[12]'/>
+      <Button locator='./*[13]/descendant::button[*[@aria-label="form"]]'
+        name="Редактировать"/>
+      <Button locator='./*[13]/descendant::button[*[@aria-label="lock"]]'
+        name="Заблокировать пользователя"/>
+      <Button locator='./*[13]/descendant::button[*[@aria-label="stop"]]'
+        name="Выключить пользователя"/>
+      <Button locator='./*[13]/descendant::button[*[@aria-label="delete"]]'
+        name="Удалить"/>
+    </Collection>
+    <Button name="Кнопки"
+      locator='.//descendant::tr[td[text()="#{текст}"]]/descendant::*[*[@aria-label="#{aria_label}"]]'/>
+    <CheckBox name="Выделить всех"
+      locator="descendant::*/table/thead/tr/descendant::*[*[@type='checkbox']]"/>
+    <CheckBox name="Выделены все главный чекбокс"
+      locator="(descendant::*[*[@type='checkbox'] and contains(@class,'ant-checkbox-checked')])[1]"/>
+    <Collection name="Проверить Выделить всех"
+      locator="descendant::*[*[@type='checkbox'] and contains(@class,'checked')]"/>
+    <CheckBox name="Проверка Чек-бокс"
+      locator=".//descendant::tr[td[text()='#{Имя пользователя}']]/descendant::*[*[@type='checkbox'] and contains(@class,'checked')]"/>
+    <CheckBox name="Проверить Выделить нескольких"
+      locator="./descendant::*[*[@type='checkbox'] and contains(@class,'indeterminate')]"/>
+    <Collection name="Список выбранных Пользователей"
+      locator="./descendant::tbody/tr[@data-row-key and contains(@class,'selected')]">
+      <CheckBox name="Чек-бокс" locator="./descendant::label"/>
+      <StaticText name="ИД" locator="./*[2]"/>
+      <StaticText name="Фамилия" locator="./*[3]"/>
+      <StaticText name="Имя" locator="./*[4]"/>
+      <StaticText name="Отчество" locator="./*[5]"/>
+      <StaticText name="Имя пользователя" locator="./*[6]"/>
+      <StaticText name="Электронная почта" locator="./*[7]"/>
+      <StaticText name="Организация" locator="./*[8]"/>
+      <StaticText name="Примечание" locator="./*[9]"/>
+      <StaticText name="Должность" locator="./*[10]"/>
+      <Button name="Редактировать" locator='./*[11]/descendant::button[*[@aria-label="form"]]'/>
+      <Button name="Заблокировать пользователя"
+        locator='./*[11]/descendant::button[*[@aria-label="lock"]]'/>
+      <Button name="Удалить" locator='./*[11]/descendant::button[*[@aria-label="delete"]]'/>
+    </Collection>
+  </Page>
+  <Page name="Новый пользователь" locator='descendant::*[@role="tab" and text()="Пользователи"]'>
+    <TextInput name="Фамилия" template="Поле_Ввода_По_Имени_Label"/>
+    <TextInput name="Имя" template="Поле_Ввода_По_Имени_Label"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Отчество"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Электронная почта"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Имя пользователя"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Организация"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Примечание"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Пароль"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Области действия"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Телефон"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Должность_1"/>
+    <TextInput template="Поле_Ввода_По_Имени_Label" name="Должность"/>
+    <TextInput name="Выбрать область действия"
+      template="Выпадающий_Список_Выбор_Нескольких+Значений"
+      locator="descendant::*[contains(@class,'ant-select-dropdown') and not(contains(@class,'hidden'))]/*[@aria-selected=&quot;false&quot; and descendant::*[text()='#{область}']]"/>
+    <StaticText name="Подсказка заполнения поля"
+      locator="//*[contains(@class,'item-label') and descendant::text()='#{имя}']/following-sibling::*/descendant::*[@role='alert' and text()='#{текст}']"/>
+  </Page>
+  <Page name="Страница подтверждения выхода">
+    <Button name="Выйти" locator='descendant::*[@type="submit" and text()="Выйти"]'/>
+    <Button name="Отмена" locator='descendant::*[@type="button" and text()="Отмена"]'/>
+    <StaticText locator='descendant::h2[text()="Вы действительно хотите выйти?"]'
+      name="Сообщение подтверждения"
+      isLoaded="true"/>
+  </Page>
+  <Page name="Пагинация"
+    locator="//*[@role=&quot;tabpanel&quot; and @aria-hidden=&quot;false&quot;]/descendant::*[contains(@class,'ant-pagination')]">
+    <Button name="Назад" locator='descendant::*[@title="Назад"]'/>
+    <Button name="Вперед" locator='descendant::*[@title="Вперед"]'/>
+    <Button name="По номеру" locator='descendant::*[@title="Вперед"]'/>
+  </Page>
+  <Page name="Настройки ролевой пользователя"
+    locator='//*[@role="tabpanel" and @aria-hidden="false"]'>
+    <Button name="Меню"
+      locator="./descendant::*[@role='tab' and *[text()='#{имя}'] and @class='ant-tabs-tab-btn']"/>
+    <CheckBox name="ЧекБокс фильтрации"
+      locator="./descendant::*[@aria-hidden='false' and @style='' and not(descendant::*[@role='tabpanel'])]/descendant::label[descendant::text()='#{имя}']/descendant::*[*[@type='checkbox']]"/>
+    <CheckBox name="ЧекБокс Только группы, в которые входит пользователь"
+      locator="./descendant::label[descendant::text()='Только группы, в которые входит пользователь']/descendant::span[contains(@class,'ant-checkbox')]"/>
+    <Button name="Объекты навигации"
+      locator="./descendant::label[contains(@class,'ant-radio-button-wrapper') and *[text()='Объекты навигации']]"/>
+    <Button name="Группы и пользователи"
+      locator="./descendant::label[contains(@class,'ant-radio-button-wrapper') and *[text()='Группы и пользователи']]"/>
+    <TextInput name="Должность" template="Поле_Ввода_По_Имени_Label"/>
+    <Collection name="Список групп пользователя"
+      locator=" ./descendant::tbody/tr[@data-row-key]">
+      <StaticText name="Чек-бокс" locator="./descendant::*[@type='checkbox']/parent::*"/>
+      <StaticText name="ИД" locator='./*[2]'/>
+      <StaticText name="Наименование" locator='./*[3]'/>
+      <StaticText name="Описание" locator='./*[4]'/>
+      <Button name="Дата конца срока действия группы"
+        locator='./*[5]/descendant::input'/>
+    </Collection>
+    <Collection name="Список Объекты системы" locator="./descendant::tbody/tr[@data-row-key]">
+      <StaticText name="Тип" locator="./*[1]"/>
+      <StaticText name="Наименование" locator="./*[2]"/>
+      <StaticText name="Роли поиск" locator="./*[3]/descendant::input"/>
+      <StaticText name="Дата создания" locator="./*[4]"/>
+      <StaticText name="Дата изменения" locator="./*[5]"/>
+      <Button name="Действия" locator="*[6]/descendant::button[*[@aria-label='link']]"/>
+      <StaticText name="Роли" locator="./*[3]"/>
+    </Collection>
+    <Collection name="Список Роли"
+      locator=" ./descendant::tbody/tr[@data-row-key]">
+      <StaticText name="Наименование" locator="./*[1]"/>
+      <Button name="Клиент" locator="./*[2]/descendant::input"/>
+      <CheckBox name="Чек-бокс" locator="./descendant::*[@type='checkbox']/parent::*"/>
+    </Collection>
+    <Collection name="Выпадающий список ролей для объекта"
+      locator="descendant::*[contains(@class,'dropdown-placement-bottomLeft')]/descendant::*[@aria-selected]">
+      <StaticText name="title" locator="."/>
+      <StaticText name="Текст" locator="./descendant::*[text()]"/>
+    </Collection>
+    <StaticText name="Нет данных"
+      locator="descendant::*[contains(@class,'ant-tabs-tabpane-active')]/descendant::td[descendant::text()='Нет данных']"/>
+  </Page>
+</Pages>
