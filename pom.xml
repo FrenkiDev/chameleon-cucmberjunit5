@@ -4,10 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>cucmberjunit5</artifactId>
+    <groupId>ru.ibs.planeta</groupId>
+    <artifactId>chameleon-cucmberjunit5</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>chameleon-cucmberjunit5</name>
     <packaging>jar</packaging>
+
+    <parent>
+        <groupId>ru.ibsqa.chameleon</groupId>
+        <artifactId>chameleon-bom</artifactId>
+        <version>3.5.0</version>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,9 +22,9 @@
 
     <repositories>
         <repository>
-            <id>qualit-snapshots</id>
-            <name>IBS QualIT Snapshots Repo</name>
-            <url>https://nexus.appline.ru/repository/qualit-snapshots</url>
+            <id>chameleon-snapshots</id>
+            <name>IBS Chameleon Snapshots Repo</name>
+            <url>https://nexus.appline.ru/repository/chameleon</url>
             <layout>default</layout>
             <snapshots>
                 <enabled>true</enabled>
@@ -25,80 +32,32 @@
         </repository>
     </repositories>
 
-    <dependencyManagement>
+    <!--dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>ru.ibsqa.qualit</groupId>
-                <artifactId>qualit-bom</artifactId>
-                <version>3.3.0-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-bom</artifactId>
-                <version>7.12.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.9.3</version>
+                <groupId>ru.ibsqa.chameleon</groupId>
+                <artifactId>chameleon-bom</artifactId>
+                <version>3.5.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement-->
 
     <dependencies>
         <dependency>
-            <groupId>ru.ibsqa.qualit</groupId>
-            <artifactId>qualit-web-cucumber</artifactId>
+            <groupId>ru.ibsqa.chameleon</groupId>
+            <artifactId>chameleon-web-cucumber</artifactId>
         </dependency>
         <dependency>
-            <groupId>ru.ibsqa.qualit</groupId>
-            <artifactId>qualit-log</artifactId>
+            <groupId>ru.ibsqa.chameleon</groupId>
+            <artifactId>chameleon-log</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ru.ibsqa.qualit</groupId>
-            <artifactId>qualit-allure-cucumber</artifactId>
+            <groupId>ru.ibsqa.chameleon</groupId>
+            <artifactId>chameleon-allure-cucumber</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit-platform-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
         </dependency>
     </dependencies>
 
