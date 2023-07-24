@@ -4,6 +4,7 @@ import io.cucumber.spring.CucumberContextConfiguration;
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.SelectDirectories;
 import org.junit.platform.suite.api.Suite;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -13,13 +14,13 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("org/example")
+@SelectDirectories("src/test/resources")
 @CucumberContextConfiguration
 @ContextConfiguration("classpath:spring.xml")
 @TestExecutionListeners(inheritListeners=false, listeners={DependencyInjectionTestExecutionListener.class})
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty,summary,io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm")
 @ConfigurationParameter(key = OBJECT_FACTORY_PROPERTY_NAME, value = "io.cucumber.spring.ChameleonFactory")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ru.ibsqa.chameleon")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ru.ibsqa.chameleon, org.example")
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@TEST_FULL")
 @ConfigurationParameter(key = PLUGIN_PUBLISH_ENABLED_PROPERTY_NAME, value = "true")
 @ConfigurationParameter(key = PARALLEL_EXECUTION_ENABLED_PROPERTY_NAME, value = "true")
