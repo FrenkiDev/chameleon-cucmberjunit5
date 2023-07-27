@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Настройки формы поиска">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Настройки поиска']"/>
+
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <Button name="Настройки формы поиска" locator="//*[@class='ant-breadcrumb']/span[2]/span/a"/>
+
+        <TextInput name="Справочник" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Справочник']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Количество записей по умолчанию" locator="//div[text()='Количество записей по умолчанию']/following-sibling::div//input"/>
+        <Button name="Поля простого поиска" template="RndButton"/>
+<!--        <Button name="Добавить для поиска" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'view-module_contentHide'))]//span[contains(text(),'Добавить')]/.."/>-->
+        <Collection name="Строки таблицы поля простого поиска" locator="//table/tbody/tr">
+            <StaticText name="Столбец Отображаемое поле" locator="./td[2]"/>
+            <StaticText name="Столбец Поле" locator="./td[3]"/>
+        </Collection>
+        <Button name="Поля фильтров" template="RndButton"/>
+        <TextInput name="Значение по умолчанию" locator="//div[text()='Значение по умолчанию']/following-sibling::div//input"/>
+        <TextInput name="Номер строки" locator="//div[text()='Номер строки']/following-sibling::div//input"/>
+        <TextInput name="Количество занимаемых колонок" locator="//div[text()='Количество занимаемых колонок']/following-sibling::div//input"/>
+        <TextInput name="Поля фильтров.Наименование"
+                   locator="//div[contains(@class,'content')][3]//div[text()='Наименование']/following-sibling::div//input"/>
+        <Collection name="Строки таблицы поля фильтров" locator="//table/tbody/tr">
+            <StaticText name="Столбец Количество занимаемых колонок" locator="./td[2]"/>
+            <StaticText name="Столбец Отображаемое поле" locator="./td[3]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[4]"/>
+            <StaticText name="Столбец Номер строки" locator="./td[5]"/>
+            <StaticText name="Столбец Поле" locator="./td[6]"/>
+            <StaticText name="Столбец Наименование" locator="./td[7]"/>
+            <StaticText name="Столбец Значение по умолчанию" locator="./td[8]"/>
+<!--            Порядок столбцов для 2.7
+            <StaticText name="Столбец Наименование" locator="./td[2]"/>
+            <StaticText name="Столбец Поле" locator="./td[3]"/>
+            <StaticText name="Столбец Отображаемое поле" locator="./td[4]"/>
+            <StaticText name="Столбец Значение по умолчанию" locator="./td[5]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[6]"/>
+            <StaticText name="Столбец Количество занимаемых колонок" locator="./td[7]"/>
+            <StaticText name="Столбец Номер строки" locator="./td[8]"/>-->
+        </Collection>
+        <Button name="Поля результатов поиска" template="RndButton"/>
+        <TextInput name="Исходное" locator="//div[text()='Исходное']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Наименование столбца" locator="//div[text()='Наименование столбца']/following-sibling::div//input"/>
+        <Collection name="Строки таблицы поля результатов поиска" locator="//table/tbody/tr">
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Отображаемое поле" locator="./td[3]"/>
+            <StaticText name="Столбец Поле-источник данных" locator="./td[4]"/>
+            <StaticText name="Столбец Наименование столбца" locator="./td[5]"/>
+<!--            Порядок столбцов для 2.7
+            <StaticText name="Столбец Наименование столбца" locator="./td[2]"/>
+            <StaticText name="Столбец Поле-источник данных" locator="./td[3]"/>
+            <StaticText name="Столбец Отображаемое поле" locator="./td[4]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[5]"/>-->
+        </Collection>
+        <Button name="Сортировка по умолчанию" template="RndButton"/>
+        <TextInput name="Направление сортировки" locator="//div[text()='Направление сортировки']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <Collection name="Строки таблицы сортировка по умолчанию" locator="//table/tbody/tr">
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Направление" locator="./td[3]"/>
+            <StaticText name="Столбец Поле" locator="./td[4]"/>
+<!--            Порядок столбцов для 2.7
+            <StaticText name="Столбец Поле" locator="./td[2]"/>
+            <StaticText name="Столбец Направление" locator="./td[3]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[4]"/>-->
+        </Collection>
+        <Button name="Предустановленные фильтры" template="RndButton"/>
+        <TextInput name="Условие" locator="//div[text()='Условие']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Значение" locator="//div[text()='Значение']/following-sibling::div//input"/>
+        <Collection name="Строки предустановленные фильтры" locator="//table/tbody/tr">
+            <StaticText name="Столбец поле" locator="./td[2]"/>
+            <StaticText name="Столбец условие" locator="./td[3]"/>
+            <StaticText name="Столбец значение" locator="./td[4]"/>
+        </Collection>
+        <Button name="Действия" template="RndButton"/>
+        <Collection name="Строки таблицы действия" locator="//table/tbody/tr">
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Страница" locator="./td[3]"/>
+            <StaticText name="Столбец Действие" locator="./td[4]"/>
+<!--            Порядок столбцов для 2.7
+            <StaticText name="Столбец Действие" locator="./td[2]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[3]"/>
+            <StaticText name="Столбец Страница" locator="./td[4]"/>-->
+        </Collection>
+    </Page>
+</Pages>

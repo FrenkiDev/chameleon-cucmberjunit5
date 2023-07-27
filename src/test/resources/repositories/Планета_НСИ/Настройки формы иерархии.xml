@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Настройки формы иерархии">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Настройки UI иерархии']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+        <TextInput name="Справочник для иерархии" locator="//*[contains(text(),'Справочник')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+
+        <TextInput name="Поле кода узла" template="VerifyTextInput"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+
+        <TextInput name="Поле наименования узла" template="VerifyTextInput"
+                   customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+    </Page>
+</Pages>

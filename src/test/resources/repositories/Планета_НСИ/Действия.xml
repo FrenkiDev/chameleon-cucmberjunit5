@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Действия">
+        <StaticText name="Заголовок"
+                    locator="//*[@class='ant-breadcrumb-link' and text()='Действия']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+    </Page>
+</Pages>

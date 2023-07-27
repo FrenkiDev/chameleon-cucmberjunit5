@@ -5,7 +5,7 @@
   # $Пароль_пользователя Pa$$W0rd
   # $доступная_пользователю_после_авторизации Главная
 
-@TEST_1
+@FULL_REGRESS @P.AC-REGRESS @AUTHORIZATION
 Функция: Сервис авторизации
   @ExternalId=24965
   @WorkItemId=24965

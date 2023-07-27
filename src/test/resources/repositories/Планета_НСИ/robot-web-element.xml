@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <!--Page name="Авторизация">
+        <Page name="Вход в систему">
+            <StaticText name="Заголовок" locator="//*[@id='signin']/h2" isLoaded="true"/>
+            <TextInput name="Логин" locator="//input[@id='username']"/>
+            <CheckBox name="Запомнить меня"/>
+            <Button name="Войти" locator="//*[contains(text(), 'Войти') and @type='submit']"/>
+            <TextInput name="Пароль" locator="//input[@id='password']"/>
+        </Page>
+        <Page name="Подтверждение выхода">
+            <StaticText name="Заголовок" isLoaded="true"
+                        locator="//*[@class='form-signin']/h2[text()='Вы действительно хотите выйти?']"/>
+            <Button name="Выйти"/>
+            <Button name="Отмена"/>
+        </Page>
+        <Page name="Приглашение ко входу">
+            <StaticText name="Заголовок" locator="//h2[text()='Войдите используя OAuth 2.0']" isLoaded="true"/>
+            <Link name="Пространство ИБС"/>
+        </Page>
+    </Page-->
+
+    <Page name="Служебные блоки robot">
+        <Page name="Блок Верхнее меню">
+            <!--        Может открыть и закрыть меню-->
+            <Button name="Кнопка вызова меню" locator="//*[contains(@class, 'anticon-menu')]"/>
+            <!--        Стрелка влево, закрывает бургер меню, если открыто-->
+            <Button name="Кнопка Системные сообщения"
+                    locator="//*[contains(@class,'nsi-app-menu-module_system')]//*[contains(@class, 'anticon-mail')]"/>
+            <StaticText name="Авторизованный пользователь"
+                        locator="//*[contains(@class,'nsi-app-menu-module_system')]//*[contains(@class,'anticon-user')]"/>
+            <Button name="Выйти" locator="//*[contains(@class,'anticon-logout')]"/>
+            <Button name="Название справочника"
+                    locator="//*[contains(@class, 'page-tree-view-module_title') and text() = '#{Название_справочника}']"/>
+            <TextInput name="Быстрый поиск. Текст для поиска" locator="//*[contains(@class,'search-bar-module')]//input[@placeholder='Быстрый поиск']"/>
+        </Page>
+        <Page name="Кнопки навигации robot">
+            <Button name="Сохранить запись" locator="//*[contains(@class, 'actions-bar-module_actions')]//*[text()='Сохранить запись']"/>
+            <Button name="Открыть" locator="//*[@id='std-view'] | //*[contains(@class,'menu')]/*[text()='Открыть']"/>
+            <Button name="Редактировать" locator="//*[text()='Редактировать']"/>
+            <Button name="Создать запись" locator="//button[@type]/*[text()='Создать запись'] | //*[contains(@class,'bar-module_role') and text()='Создать запись']"/>
+            <Button name="Удалить" locator="//*[text()='Удалить']"/>
+            <Button name="Отмена" locator="//*[@id='std-cancel']"/>
+            <Button name="Закрыть" locator="//*[text()='Закрыть']"/>
+            <Button name="Еще" locator="//*[text()='Еще']"/>
+
+            <Button name="Открыть фильтры" locator="//*[contains(@class,'search-bar-module')]//*[@aria-label='filter']"/>
+            <StaticText name="Всего элементов" locator="//*[@class='action' and text()='Всего элементов']/b"/>
+            <StaticText name="Найдено элементов" locator="//*[contains(@class,'table-page-module_searchInfo') and contains(text(),'Найдено')]"/>
+            <StaticText name="Отмечено элементов" locator="//*[@class='action' and text()='Отмечено']/b"/>
+            <Button name="Применить" locator="//*[@type ='submit']"/>
+            <Button name="Сбросить" locator="//*[@type='button' and contains(@class, 'reset')]"/>
+            <Button name="Продолжить" locator="//*[@class ='ant-btn login-form-button ant-btn-primary']"/>
+            <Button name="Закрыть модальное окно" locator="//*[contains(@class, 'icon-cancel')]"/>
+        </Page>
+
+        <Page name="Блок Расширенный фильтр">
+            <Button name="Расширенный фильтр. Добавить фильтр" locator="//*[*/text()='Добавить фильтр']/../..//input"/>
+            <Collection name="Расширенный фильтр. Объекты фильтра" locator="//*[contains(@class, 'filter-bar-module_layout')]">
+                <StaticText name="Расширенный фильтр. Boolean" locator=".//*[@class='ant-segmented-group']"/>
+                <StaticText name="Расширенный фильтр. Название" locator=".//div[contains(@class,'titleText')]"/>
+                <TextInput name="Расширенный фильтр. Input" locator=".//*[contains(@class,'filter-field-layout-module_value')]//input"/>
+                <Button name="Расширенный фильтр. Кнопка plus" locator=".//button//*[@aria-label='plus']"/>
+                <TextInput name="Расширенный фильтр. Оператор" locator="//*[@class='ant-select-selection-item']/*"
+                           customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+            </Collection>
+        </Page>
+
+        <Page name="Блок Пагинация robot">
+            <Button name="Количество записей на странице" locator="//div[@aria-label='Page Size']"
+                       customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+            <Collection name="Пагинация. Страницы" locator="//li[contains(@class,'ant-pagination-item')]">
+                <StaticText name="Пагинация. Страница" locator="."/>
+            </Collection>
+        </Page>
+    </Page>
+
+    <Page name="Главная страница robot">
+        <Block name="Блок Верхнее меню"/>
+        <Block name="Блок Бургер-меню"/>
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'nsi-app')]//*[text()='АС ЦНСИ2'] | //*[contains(@class,'nsi-app')][text()='Планета.НСИ']"/>
+    </Page>
+
+    <Page name="Блок Бургер-меню robot">
+        <Button name="Кнопка Скрыть меню"
+                locator="//*[not(contains(@class,'-hidden')) and contains(@class,'ant-drawer-content-wrapper') or contains(@class,'mainMenuSticky')]//*[@aria-label='menu-fold']"/>
+        <StaticText name="Данные для настройки"
+                    locator="//*[contains(@class,'module_categories') and not(contains(@class,'categoriesHide'))]//*[text()='Данные для настройки']"/>
+        <StaticText name="Конфигурация"
+                    locator="//*[contains(@class,'module_categories') and not(contains(@class,'categoriesHide'))]//*[text()='Конфигурация']"/>
+        <StaticText name="Панель Меню" isLoaded="true"
+                    locator="//div[@class='ant-drawer-content-wrapper' and @style]"/>
+        <TextInput name="Бургер-меню. Быстрый поиск"
+                   locator="//*[@class='ant-drawer-body']//*[contains(@class,'headerSearch')]//input"/>
+        <Button name="Бургер-меню. Быстрый поиск. Очистить"
+                locator="//*[@class='ant-drawer-body']//*[@aria-label='close-circle']"/>
+    </Page>
+
+    <Page name="Универсальная страница Пользовательские справочники robot">
+        <Block name="Блок Верхнее меню"/>
+        <Block name="Блок Бургер-меню"/>
+        <Block name="Кнопки навигации"/>
+        <Block name="Блок Расширенный фильтр"/>
+        <Block name="Блок Пагинация"/>
+        <StaticText name="Заголовок"
+                    locator="//*[contains(@class,'table-page-module_captionTitle')]"/>
+        <Collection name="Заголовки таблицы" locator="//table/thead/tr/th">
+            <StaticText name="Заголовок таблицы" locator="."/>
+        </Collection>
+        <Collection name="Строки таблицы" locator="//table/tbody/tr">
+            <StaticText name="Строка таблицы" locator="."/>
+            <CheckBox name="Столбец Чекбокс" locator=".//label[contains(@class, 'checkbox')]"/>
+            <Link name="Столбец Ссылка" locator=".//*[contains(@class,'link-button-module')]"/>
+        </Collection>
+        <Collection name="Элементы" locator="//div[contains(@class,'tabs-view-module_content')
+        and not(contains(@class,'abs-view-module_contentHide'))]//div[contains(@class,'module_elementLayout')]">
+            <Button name="Элемент" locator="./*[1]"/>
+            <StaticText name="Элемент_Имя поля" locator="./*[@class]"/>
+            <TextInput name="Элемент_Input" locator="./*[2]"/>
+            <TextInput name="Элемент_Input_" locator=".//*[contains(@class,'checkbox-input') or @readonly or contains(@class,'readonly')]"/>
+            <StaticText name="Элемент_Обязательно заполнено" locator="./*[contains(@class,'required')]"/>
+        </Collection>
+        <Collection name="Элементы_Input_Служебные поля" locator="(//div[contains(@class,'tabs-view-module_content')
+        and not(contains(@class,'abs-view-module_contentHide'))]//div[contains(@class,'module_elementLayout')]/*[2])
+        | (//label[contains(@class,'checkbox-wrapper')])">
+            <TextInput name="Элемент_Input_Служебные поля" locator="."/>
+        </Collection>
+
+        <Collection name="Элементы Если нет вкладок" locator="//div[contains(@class,'module_elementLayout')]">
+            <Button name="Элемент" locator="./*[1]"/>
+            <StaticText name="Элемент_Имя поля" locator="./*[@class]"/>
+            <StaticText name="Элемент_Обязательно заполнено" locator="./*[contains(@class,'required')]"/>
+            <TextInput name="Элемент_Input" locator="./*[2]"/>
+        </Collection>
+
+        <Collection name="Разделы" locator="//*[contains(@class,'module_tabsItem')]">
+            <Button name="Раздел" locator="."/>
+        </Collection>
+        <Button name="Раздел Служебные поля" locator="//*[contains(@class,'tab')]//*[text()='Служебные поля']"/>
+
+        <StaticText name="Выбранный раздел"
+                    locator="//*[./child::*[contains(text(),'Раздел ')] and @aria-selected='true']"/>
+
+        <Button name="Установить" locator="//*[text()='Установить']/.."/>
+        <Button name="Отменить"
+                locator="//*[text()='Отмена' or text()='Закрыть']/ancestor-or-self::button"/>
+
+        <StaticText name="Ошибка приложения" locator="//*[contains(text(),'Произошла ошибка приложения')]"/>
+        <StaticText name="icon load" locator="//*[@class='anticon-spin'] | //*[contains(@class,'spin-dot')]| //*[contains(@class,'spinner-module_busy')]"/>
+
+        <TextInput name="Расширенный фильтр. Оператор. Тип операции" locator="//*[text()='Тип операции']/../..//*[@class='ant-select-selector']"
+                   customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+        <TextInput name="Расширенный фильтр. Input. Тип операции" locator="//*[text()='Тип операции']/../..//*[contains(@class,'filter-field-layout-module_value')]//input"/>
+        <TextInput name="Расширенный фильтр. Оператор. Дата изменения записи" locator="//*[text()='Дата изменения записи']/../..//*[@class='ant-select-selector']"
+                   customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+        <TextInput name="Расширенный фильтр. Input. Дата изменения записи" locator="//*[text()='Дата изменения записи']/../..//*[contains(@class,'filter-field-layout-module_value')]//input"/>
+        <StaticText name="Форма ввода" locator="//*[contains(text(),'Форма ввода') and @class]"/>
+        <Button name="Подтвердить удаление robot" locator="//button[./child::*[@aria-label='check']]"/>
+        <StaticText name="Нет данных" locator="//*[@class='ant-table-content']//tbody/tr//*[contains(@class,'ant-empty ')]"/>
+
+        <TextInput name="Быстрый поиск Пакета" locator="//*[@class='ant-modal-body']//input[@placeholder='Быстрый поиск...']"/>
+        <StaticText name="Модальное окно. Ошибка" locator="//*[contains(@class,'dialog-module_frameLayout')]"/>
+        <Button name="Модальное окно. Ошибка. Закрыть" locator="//*[contains(@class,'dialog-module_frameLayout')]//button//*[@aria-label='close']"/>
+    </Page>
+
+</Pages>

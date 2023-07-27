@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Проверки">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Проверки']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <TextInput name="Справочник" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Справочник']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Сообщения" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Сообщения']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <Button name="Настройки проверок" template="RndButton"/>
+        <TextInput name="Выражение OCL" locator="//*[contains(text(),'Выражение OCL')]/following-sibling::div//input"/>
+        <TextInput name="Регулярное выражение" locator="//*[contains(text(),'Регулярное выражение')]/following-sibling::div//input"/>
+
+        <Button name="Проверяемые поля" template="RndButton"/>
+        <Button name="Добавить Проверяемые поля" locator="//span[contains(text(),'Добавить')]/.."/>
+        <TextInput name="Проверяемое поле" locator="//*[contains(text(),'Проверяемое поле')]/following-sibling::div//input"/>
+
+        <Button name="Действия" template="RndButton"/>
+        <TextInput name="Проверки.Действия"
+                   locator="//div[text()='Действия']/following-sibling::div"
+                   customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+    </Page>
+</Pages>

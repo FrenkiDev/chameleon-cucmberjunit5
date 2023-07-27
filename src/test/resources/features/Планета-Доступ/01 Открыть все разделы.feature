@@ -2,7 +2,7 @@
 
 # Тестовые данные:
 
-@TEST_1
+@FULL_REGRESS @P.AC-REGRESS @NAVIGATION
 Функция: 01 Открыть все разделы
 
 

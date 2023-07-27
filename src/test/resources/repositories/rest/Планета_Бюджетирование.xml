@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-lazy-init="true"
+       default-autowire="byName">
+
+    <bean name="endpointАвторизация" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="${BASE_URL}" value=""/>
+                <entry key="gwUserInfo" value="gw/user-info"/>
+                <entry key="oauth2Login" value="oauth2/login?redirectUrl=%2F"/>
+                <entry key="access_apiThemeActual" value="access_api/theme/actual"/>
+                <entry key="accessRealmsIbsProvidersDefaultLoginProcess"
+                       value="${redirect_scheme}://${redirect_host}/access/realms/${REAL_ID}/login/process"/>
+                <!--значение для стенда бюджета с доступом 1.1 версии,p.s. все до value удалить;value="${redirect_scheme}://${redirect_host}/access/realms/${REAL_ID}/providers/default/login/process"/>-->
+
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Upgrade-Insecure-Requests" value="1"/>
+                <entry key="DNT" value="1"/>
+                <entry key="Accept-Encoding" value="gzip, deflate"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+                <entry key="Accept"
+                       value="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"/>
+                <entry key="Referer" value="${URI_SSO_OAUTH}"/>
+                <entry key="Origin" value="${redirect_scheme}://${redirect_host}"/>
+                <entry key="Content-Type" value="application/x-www-form-urlencoded"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointСхемаROLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="rolap_apiV1DatabasesSchemas" value="rolap_api/v1.0/databases/schemas"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointСправочникROLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="rolap_apiV1Dimension" value="/rolap_api/v1.0/dimensions"/>
+                <entry key="rolap_apiV1DimensionsFilter" value="/rolap_api/v1.0/dimensions/filter"/>
+                <entry key="rolap_apiV1DimensionsData" value="/rolap_api/v1.0/dimensions/data"/>
+                <entry key="rolap_apiV1DimensionsAttribute" value="/rolap_api/v1.0/dimensions/attribute"/>
+
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointЭлементROLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="rolap_apiV1Elements" value="/rolap_api/v1.0/elements"/>
+                <entry key="rolap_apiV1ElementsChildren" value="/rolap_api/v1.0/elements/children"/>
+                <entry key="rolap_apiV1ElementsCreate" value="/rolap_api/v1.0/elements/create"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointАтрибутROLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="rolap_apiV1Attributes" value="/rolap_api/v1.0/attributes"/>
+                <entry key="rolap_apiV1AttributesVersion" value="/rolap_api/v1.0/attributes/version"/>
+                <entry key="rolap_apiV1AttributesFilter" value="/rolap_api/v1.0/attributes/filter"/>
+                <entry key="rolap_apiV1AttributesCreate" value="/rolap_api/v1.0/attributes/create"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointКубROLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="rolap_apiV1Models" value="/rolap_api/v1.0/models"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointПодключениеMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1ConnectLogin" value="olap_api/v1.0/connect/login"/>
+                <entry key="olap_apiV1ConnectLogout" value="olap_api/v1.0/connect/logout"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointПрямоеПодключениеOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="serverLogin" value="server/login"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointCRUDСущностейOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="databaseCreate" value="/database/create"/>
+                <entry key="browserDatabase" value="/browser/database"/>
+                <entry key="dimensionCreate" value="/dimension/create"/>
+                <entry key="cubeCreate" value="/cube/create"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="endpointСписокDataSources" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="content_apiV1DatabaseList" value="/content_api//v1.0/database/list"/>
+                <entry key="content_apiV1Database" value="/content_api//v1.0/database"/>
+                <entry key="content_apiV1DatabasePassword" value="/content_api//v1.0/database/password"/>
+                <entry key="content_apiV1DatabaseExist" value="/content_api//v1.0/database/exist"/>
+                <entry key="content_apiV1DatabaseFilter" value="/content_api//v1.0/database/filter"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointСхемаMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1Database" value="olap_api/v1.0/database"/>
+                <entry key="olap_apiV1DatabaseDimensions" value="/olap_api/v1.0/database/dimensions"/>
+                <entry key="olap_apiV1DatabaseDelete" value="olap_api/v1.0/database/delete"/>
+                <entry key="olap_apiV1DatabaseCubes" value="/olap_api/v1.0/database/cubes"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointСправочникMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1Dimension" value="/olap_api/v1.0/dimension"/>
+                <entry key="content_apiV1Dimensions" value="content_api/v1.0/dimensions"/>
+                <entry key="content_apiV1DimensionsFilter" value="/content_api//v1.0/dimensions/filter"/>
+                <entry key="olap_apiV1DimensionElements" value="/olap_api/v1.0/dimension/elements"/>
+                <entry key="olap_apiV1DimensionAttributes" value="/olap_api/v1.0/dimension/attributes"/>
+                <entry key="content_apiV1DimensionsInd" value="/content_api//v1.0/dimensions/ind"/>
+                <entry key="olap_apiV1DimensionInd" value="/olap_api/v1.0/dimension/ind"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointЭлементMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1Element" value="/olap_api/v1.0/element"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointАтрибутMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1Attribute" value="/olap_api/v1.0/attribute"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointКубMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1CubesCreate" value="olap_api/v1.0/cubes/create"/>
+                <entry key="olap_apiV1CubesCube" value="olap_api/v1.0/cubes/cube"/>
+                <entry key="olap_apiV1CubesRules" value="olap_api/v1.0/cubes/rules"/>
+                <entry key="olap_apiV1CubesRename" value="olap_api/v1.0/cubes/rename"/>
+                <entry key="content_apiV1Model_budget" value="/content_api//v1.0/model_budget"/>
+                <entry key="content_apiV1Model_budgetFilter" value="/content_api//v1.0/model_budget/filter"/>
+                <entry key="olap_apiV1Cubes" value="/olap_api/v1.0/cubes"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointВерсияMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1VersionService" value="olap_api/v1.0/version/service"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointСерверMOLAP" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1ServerDatabases" value="olap_api/v1.0/server/databases"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="endpointПравилоКуба" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+        <property name="urls">
+            <map>
+                <entry key="olap_apiV1RuleCreate" value="/olap_api/v1.0/rule/create"/>
+                <entry key="olap_apiV1Rule" value="/olap_api/v1.0/rule"/>
+                <entry key="olap_apiV1RulePosition" value="/olap_api/v1.0/rule/position"/>
+                <entry key="rolap_apiV1Rules" value="/rolap_api/v1.0/rules"/>
+            </map>
+        </property>
+        <property name="headerParams">
+            <map>
+                <entry key="Accept" value="application/json, text/plain, */*"/>
+                <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+                <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+                <entry key="Content-Type" value="application/json"/>
+                <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+                <entry key="Referer" value="${BASE_URL}"/>
+                <entry key="Sec-Fetch-Dest" value="empty"/>
+                <entry key="Sec-Fetch-Mode" value="cors"/>
+                <entry key="Sec-Fetch-Site" value="same-origin"/>
+                <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+            </map>
+        </property>
+    </bean>
+</beans>

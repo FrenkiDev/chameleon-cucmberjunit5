@@ -13,7 +13,7 @@
     <parent>
         <groupId>ru.ibsqa.chameleon</groupId>
         <artifactId>chameleon-bom</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.1-SNAPSHOT</version>
     </parent>
 
     <properties>
@@ -23,12 +23,17 @@
     <repositories>
         <repository>
             <id>chameleon-snapshots</id>
-            <name>IBS Chameleon Snapshots Repo</name>
-            <url>https://nexus.appline.ru/repository/chameleon</url>
+            <name>Chameleon Framework Snapshots Repo</name>
+            <url>https://nexus.appline.ru/repository/chameleon-snapshots</url>
             <layout>default</layout>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>chameleon</id>
+            <name>Chameleon Framework</name>
+            <url>https://nexus.appline.ru/repository/chameleon</url>
         </repository>
     </repositories>
 
@@ -59,9 +64,13 @@
             <artifactId>chameleon-allure-cucumber</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ru.ibsqa.chameleon</groupId>
+            <artifactId>chameleon-parallel-cucumber</artifactId>
+        </dependency>
     </dependencies>
 
-    <build>
+    <!--build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,5 +88,5 @@
                 <version>3.0.0-M5</version>
             </plugin>
         </plugins>
-    </build>
+    </-build-->
 </project>

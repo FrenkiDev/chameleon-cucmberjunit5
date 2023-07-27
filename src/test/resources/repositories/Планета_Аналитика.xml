@@ -142,6 +142,27 @@
                     locator="//label[text()='#{label}']/../following-sibling::*//input[@type='radio' and @value='#{name}']/../.."/>
             <Button name="Удалить все" template="Button_analyst"/>
         </Page>
+        <Button name="Активный виджет"
+                locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]"/>
+        <Button name="tool" template="Кнопка_arialabel"/>
+        <Page name="Свойства панели" locator="//*[text()='Свойства панели']/ancestor::*[@class='ant-modal-content']">
+            <Button name="Переключатель" locator="//label[text()='#{label}']/../following-sibling::*//button"/>
+            <Button name="Кнопка Изменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Изменить']"/>
+            <Button name="Кнопка Сменить"
+                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Сменить']"/>
+            <ComboBox name="Dropdown" customType="ru.ibs.planeta.ui.webelements.Dropdown"
+                      locator="//label[text()='#{label}']/../following-sibling::*//*[@class='ant-select-selector']"/>
+            <TextInput name="Поле ввода"
+                       locator="//*[contains(@class,'item-label') and descendant::text()='#{name}']/following-sibling::*/descendant::input"/>
+            <Button name="Ok" template="Button_analyst"/>
+        </Page>
+        <Page name="Виджет таблица"
+              locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]//tbody">
+            <Collection name="Строки" locator=".//tr">
+                <StaticText name="Заголовок" locator="./td//span[text()]"/>
+            </Collection>
+        </Page>
         <Page name="Свойства виджетов">
             <Collection name="Свойства" locator="descendant::*[contains(@class,'submenu-item__submenuItem')]">
                 <Button name="Заголовок" locator="descendant::*[text()]"/>
@@ -157,28 +178,7 @@
                 <Block name="Поля свойств виджета"/>
             </Page>
         </Page>
-        <Button name="tool" template="Кнопка_arialabel"/>
-        <Page name="Виджет таблица"
-              locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]//tbody">
-            <Collection name="Строки" locator=".//tr">
-                <StaticText name="Заголовок" locator="./td//span[text()]"/>
-            </Collection>
         </Page>
-        <Button name="Активный виджет"
-                locator="descendant::*[contains(@class,'panel__layout')]/descendant::*[contains(@class,'selected') and contains(@class,'db-layout-item__layoutItem') and @style]"/>
-        <Page name="Свойства панели" locator="//*[text()='Свойства панели']/ancestor::*[@class='ant-modal-content']">
-            <Button name="Переключатель" locator="//label[text()='#{label}']/../following-sibling::*//button"/>
-            <Button name="Кнопка Изменить"
-                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Изменить']"/>
-            <Button name="Кнопка Сменить"
-                    locator="//label[text()='#{name}']/../following-sibling::*//button[descendant::text()='Сменить']"/>
-            <ComboBox name="Dropdown" customType="ru.ibs.planeta.ui.webelements.Dropdown"
-                      locator="//label[text()='#{label}']/../following-sibling::*//*[@class='ant-select-selector']"/>
-            <TextInput name="Поле ввода"
-                       locator="//*[contains(@class,'item-label') and descendant::text()='#{name}']/following-sibling::*/descendant::input"/>
-            <Button name="Ok" template="Button_analyst"/>
-        </Page>
-    </Page>
     <Page name="Аналитические панели">
         <TextInput template="Поле_Ввода_По_Placeholder" name="Фильтр"/>
         <Collection name="Список панелей" locator="descendant::ul[@class='ant-list-items']/li">

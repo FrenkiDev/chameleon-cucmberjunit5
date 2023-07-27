@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Задачи">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Фоновые задачи']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Пагинация"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Строки таблицы"/>
+    </Page>
+</Pages>

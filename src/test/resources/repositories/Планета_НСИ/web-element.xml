@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Авторизация НСИ">
+        <StaticText name="Заголовок" locator="//span[text() = 'Планета Доступ']" isLoaded="true"/>
+        <Page name="Вход в систему НСИ">
+            <StaticText name="Заголовок" locator="//*[@id='signin']/h2" isLoaded="true"/>
+            <TextInput name="Логин" locator="//input[@id='username']"/>
+            <CheckBox name="Запомнить меня"/>
+            <Button name="Войти" locator="//*[contains(text(), 'Войти') and @type='submit']"/>
+            <TextInput name="Пароль" locator="//input[@id='password']"/>
+        </Page>
+        <Page name="Подтверждение выхода">
+            <StaticText name="Заголовок" locator="//*[text()='Планета Доступ']" isLoaded="true"/>
+            <Button name="Выйти" template="RndButton"/>
+            <Button name="Отмена"/>
+            <Button name="Назад" locator="//input[@type = 'button']"/>
+        </Page>
+        <Page name="Приглашение ко входу">
+            <StaticText name="Заголовок" locator="//h2[text()='Войдите используя OAuth 2.0']" isLoaded="true"/>
+            <Link name="Пространство ИБС"/>
+        </Page>
+    </Page>
+
+    <Page name="Главная страница">
+        <Block name="Верхнее меню"/>
+        <!--        <StaticText name="Заголовок" locator=".//*[@class='full-logo']//*[text()='Планета.НСИ']" isLoaded="true"/>-->
+        <StaticText name="Заголовок" locator=".//*[contains(@class,'header')]//*[text()='АС ЦНСИ2']" isLoaded="true"/>
+        <!--        <StaticText name="Заголовок" locator=".//*[contains(@class,'nsi-app-menu')]//*[text()='Планета.НСИ']" isLoaded="true"/>-->
+
+    </Page>
+
+    <Page name="Меню">
+        <StaticText name="Данные для настройки"
+                    locator=".//*[contains(@class,'page-tree-view-module') and text()='Данные для настройки']"
+        />
+        <StaticText name="Конфигурация"
+                    locator=".//*[contains(@class,'page-tree-view-module') and text()='Конфигурация']"
+        />
+        <StaticText name="Система" locator=".//*[contains(@class,'page-tree-view-module') and text()='Система']"
+        />
+        <StaticText name="Дубли" locator=".//*[contains(@class,'page-tree-view-module') and text()='Дубли']"
+        />
+        <StaticText name="КортежАвтотест"
+                    locator=".//*[contains(@class,'page-tree-view-module') and text()='MTR_Connect']"
+        />
+        <StaticText name="Справочники" locator=".//*[contains(@class,'page-tree-view-module') and text()='Справочники']"
+        />
+        <StaticText name="Отчёты" locator=".//*[contains(@class,'page-tree-view-module') and text()='Отчёты']"
+        />
+    </Page>
+
+
+    <!--начало служебных блоков-->
+    <Page name="Служебные блоки">
+        <Block name="Быстрый поиск"/>
+        <Block name="Верхнее меню"/>
+        <Block name="Кнопки навигации"/>
+        <Block name="Блок Сохраненные фильтры"/>
+        <Block name="Поля служебные справочники"/>
+    </Page>
+
+    <Page name="Поля служебные справочники">
+<!--        для этих локаторов обязательно передать переменные в блоке @value , @text   -->
+        <TextInput name="Форма редактировать Код" locator="//*[contains(text(),'Код')]/following-sibling::div//*[@value = '#{Код_справочника}']"/>
+        <TextInput name="Форма редактировать Описание" locator="//*[contains(text(),'Описание')]/following-sibling::div//*[@value = '#{Текст_описания}']"/>
+        <TextInput name="Форма редактировать Наименование" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'view-module_contentHide'))]//*[contains(text(),'Наименование')]/following-sibling::div//*[@value = '#{Наименование}']"/>
+
+
+        <TextInput name="Форма просмотра Код" locator="//*[contains(text(),'Код')]/following-sibling::div//*[text() = '#{Код_справочника}']"/>
+        <TextInput name="Форма просмотра Описание" locator="//*[contains(text(),'Описание')]/following-sibling::div//*[text() = '#{Текст_описания}']"/>
+        <TextInput name="Форма просмотра Наименование" locator="//*[contains(text(),'Наименование')]/following-sibling::div//*[text() = '#{Наименование}']"/>
+        <TextInput name="Тип метаданные" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Тип']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Длина" template="Number"/>
+        <TextInput name="Английское наименование" locator="//*[@class ='ant-input' and @name='en']"/>
+        <TextInput name="Русское наименование" locator="//*[@class ='ant-input' and @name='ru']"/>
+
+
+        <TextInput name="Текст описания" locator="//*[contains(text(),'Описание')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+        <TextInput name="Код" locator="//*[contains(text(),'Код')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput" waitTimeOut="60"/>
+        <TextInput name="Наименование" locator="//*[contains(text(),'Наименование')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+        <TextInput name="Справочник" locator="//*[contains(text(),'Справочник')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+        <TextInput name="Поле кода класса" locator="//div[text()='Поле кода класса']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Поле наименования класса" locator="//div[text()='Поле наименования класса']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Поле описания класса" locator="//div[text()='Поле описания класса']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Количество отображаемых атрибутов" locator="//div[text()='Количество отображаемых атрибутов']/following-sibling::div//input"/>
+        <TextInput name="Количество отображаемых классов" locator="//div[text()='Количество отображаемых классов']/following-sibling::div//input"/>
+        <TextInput name="Карточка записи" locator="//div[text()='Карточка записи']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Приоритет" locator="//div[text()='Приоритет']/following-sibling::div//input"/>
+        <TextInput name="Родительская страница" locator="//div[text()='Родительская страница']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Атрибуты типа UI" locator="//div[text()='Атрибуты типа UI']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Макс. количество сообщений на странице" locator="//div[text()='Макс. количество сообщений на странице']/following-sibling::div//input"/>
+        <TextInput name="Действие" locator="//div[text()='Действие']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Приоритет действия"
+                   locator="//div[text()='Приоритет']/following-sibling::div//input"/>
+        <TextInput name="Страница" locator="//div[text()='Страница']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <Button name="Добавить параметры" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'view-module_contentHide'))]//span[contains(text(),'Добавить')]/.."/>
+
+        <TextInput name="Поле" locator="//div[text()='Поле']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Отображаемое поле" locator="//div[text()='Отображаемое поле']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Ширина" locator="//div[text()='Ширина']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+
+        <TextInput name="Минимальный вес" locator="//*[contains(text(),'Минимальный вес')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+        <TextInput name="Максимальный вес" locator="//*[contains(text(),'Максимальный вес')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+        <StaticText name="Заголовок карточки" locator="//*[contains(@class, 'form-page-module_title')]"/>
+        <CheckBox name="Чекбокс по названию" locator="//*[./child::*[normalize-space(text())='#{Имя_чекбокса}']]/label[contains(@class, 'checkbox')]"/>
+    </Page>
+        <Page name="Быстрый поиск">
+            <TextInput name="Текст для поиска" locator="//div[contains(@class,'search-bar-module')]//*[@placeholder='Быстрый поиск']"
+                       customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+            <Button name="Найти" locator=".//*[contains(@class,'nsi-icon-looking-glass')]"/>
+            <Button name="Найти Сбросить" locator="//*[contains(@class,'nsi-icon-cross')]"/>
+        </Page>
+        <Page name="Верхнее меню">
+            <Button name="Кнопка вызова меню" locator="//span[@class= 'anticon anticon-menu']" waitTimeOut="10"/>
+            <Button name="Кнопка Системные сообщения" locator="//*[@class =  'anticon anticon-mail']"/>
+            <StaticText name="Авторизованный пользователь"
+                        locator="//*[@aria-label ='user']/parent::*[contains(@class,'link-button-module')]"/>
+            <Button name="Выйти" locator=".//span[ contains(text(),'Выйти')]"/>
+            <Button name="Название справочника"
+                    locator="//*[contains(@class, 'page-tree-view-module_title') and text() = '#{Название_справочника}']"/>
+            <StaticText name="Placeholder таблицы" locator="//*[contains(@class, 'table-placeholder')]"/>
+            <TextInput name="Фильтр.Код.Оператор"
+                       locator="//*[contains(@class,'dropdown-list') and @data-element-field='code']"
+                       customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+            <TextInput name="Фильтр.Наименование.Оператор"
+                       locator="//*[contains(@class,'dropdown-list') and @data-element-field='name']"
+                       customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+            <Button name="Первая строка таблицы" locator="//tr[contains(@class, 'ant-table-row')][1]"/>
+        </Page>
+        <Page name="Кнопки навигации">
+            <!--            <Button name="Импорт" locator="//*[contains(@class, 'actions-panel-module_layout')]/div[1]"/>-->
+            <Button name="Импорт" locator="//*[text()='Импорт']/.."/>
+            <Button name="Импортировать"
+                    locator="//ancestor::div[not(contains(@class,'ant-space-item'))]/*[text()='Импорт']"/>
+            <!--            <Button name="Импортировать" locator="//div[not(contains(@class, 'ant-space-item')//*[text()='Импорт']"/>-->
+            <TextInput name="Добавить" template="RndButton"/>
+            <CheckBox name="Чекбокс" locator="//tbody//*[contains(@class, 'ant-checkbox-wrapper')]"/>
+            <Button name="Сохранить запись" template="RndButton"/>
+            <Button name="Открыть" template="RndButton"/>
+            <Button name="Закрыть" template="RndButton"/>
+            <Button name="Редактировать" template="RndButton"/>
+            <Button name="Создать запись" template="RndButton"/>
+            <Button name="Удалить" template="RndButton"/>
+            <Button name="Вернуться к таблице" locator="//span[text() = 'Таблица']"/>
+            <Button name="Подтвердить удаление" locator="//button[./child::*[@aria-label='check']]"/>
+            <Button name="Экспорт" template="RndButton"/>
+            <Button name="Экспорт в формат JSON" locator="//*[text()='Экспорт в формат JSON']"/>
+            <Button name="Отмена" template="RndButton"/>
+            <Button name="Блокировка записи" template="RndButton"/>
+            <Button name="Разблокировка записи" template="RndButton"/>
+            <Button name="Закрыть форму" locator="//*[@id='std-close-view']"/>
+            <Button name="Еще" locator="//*[text()='Еще']"/>
+            <StaticText name="Запись заблокирована" locator="//table/tbody/tr/td[2]/span"/>
+            <Button name="Пагинация 1"
+                    locator="//*[contains(@class , 'ant-pagination-item ant-pagination-item') and @title = '1']"/>
+            <Button name="Пагинация 2"
+                    locator="//*[contains(@class , 'ant-pagination-item ant-pagination-item') and @title = '2']"/>
+            <StaticText name="Найдено записей" locator="//button[contains(@class, 'searchInfo')]"/>
+            <!--            2.7-->
+            <!--            <StaticText name="Найдено записей" locator="//*[contains(@class, 'ant-typography')]"/>-->
+            <StaticText name="Всего элементов" locator="//*[@class='action' and text()='Всего элементов']/b"/>
+            <StaticText name="Найдено элементов" locator="//*[@class='action' and text()='Найдено']/b"/>
+            <StaticText name="Отмечено элементов" locator="//*[@class='action' and text()='Отмечено']/b"/>
+            <Button name="Применить" locator="//*[@type ='submit']"/>
+            <Button name="Сбросить" locator="//*[@type='button' and contains(@class, 'reset')]"/>
+            <Button name="Продолжить" locator="//div[contains(@class,'dialog-module_layout')]//*[contains(@data-icon,'check')]"/>
+            <Button name="Экспортировать" locator="//*[contains(text(), 'Экспортировать')]/parent::button"/>
+            <StaticText name="Экспорт завершен" locator="//*[text()='Экспорт завершен!']"/>
+            <Button name="Продолжить импорт" locator="//*[contains(text(), 'Продолжить импорт')]/parent::button"/>
+            <StaticText name="Импорт завершен" locator="//*[contains(text(), 'Импорт завершен')]"/>
+            <Button name="Закрыть модальное окно" locator="//*[text()='Закрыть']"/>
+            <Button name="Закрыть сообщение" locator="//*[contains( @class,'dialog')]//*[contains(@class, 'ant-btn-default')]"/>
+<!--            <TextInput name="Фильтр.Код" locator="//*[@data-element-field-path ='filterValues.code.value']"/>-->
+<!--            <TextInput name="Фильтр.Наименование" locator="//*[@data-element-field-path='filterValues.name.value']"/>-->
+        </Page>
+
+        <Page name="Блок Пагинация">
+            <Collection name="Пагинация Номер страницы" locator="//li[contains(@class, 'pagination-item')]">
+                <Button name="Номер страницы" locator="."/>
+            </Collection>
+            <Collection name="Пагинация Промежуточные страницы" locator="//li[contains(@class, 'pagination-item')]">
+                <Button name="Промежуточная страница" locator="."/>
+            </Collection>
+            <Button name="Пагинация Назад" locator="//li[contains(@class, 'pagination-prev')]/button"/>
+            <Button name="Пагинация Вперед" locator="//li[contains(@class, 'pagination-next')]/button"/>
+        </Page>
+        <Page name="Блок фильтров">
+                <Button name="Раскрыть фильтры" locator="//div[contains(@class,'search-bar-module')]/span[contains(@class,'ant-badge')]"/>
+                <TextInput name="Добавить фильтр" locator="//div[contains(@class,'ant-select filter-panel-module_caption')]//input"
+                           customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+                <Collection name="Выбранные фильтры" locator="//div[contains(@class,'filter-bar-module_layout')]">
+                    <Button name="Текст фильтра" locator=".//div[text()]"/>
+                    <TextInput name="Условие для фильтрации" locator=".//div[@class='ant-select-selector']"
+                               customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+                    <TextInput name="Значение для фильтрации" locator=".//div[contains(@class, 'value')]//input"
+                               customType="ru.ibs.planeta.ui.elements.MyTextInput"/>
+                </Collection>
+                <StaticText name="Иконка warning" locator="//*[@aria-label='warning']" waitTimeOut="3"/>
+                <Button name="Очистить" template="RndButton"/>
+                <Button name="Новый набор" template="RndButton"/>
+                <Button name="Удалить набор" locator="//div[contains(@class,'filter-panel-module_caption')]//span[@aria-label='delete']"/>
+                <TextInput name="Название набора" locator="//input[@placeholder='Название набора']"/>
+                <TextInput name="Ввод сохраненного фильтра" locator="//div[contains(@class, 'filter-store-module_select')]//input"
+                           customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        </Page>
+        <Page name="Блок Сохраненные фильтры">
+            <Button name="Фильтр.Редактировать фильтры"
+                    locator="//*[@class='filters-panel__right']//*[contains(@class,'icon-edit')]"/>
+            <TextInput name="Фильтр.Ввод.Имя фильтра"
+                       locator="//*[@class='filters-panel__right']//input[@placeholder='Имя фильтра...']"/>
+            <TextInput name="Фильтр.Сохранить"
+                       locator="//*[@class='filters-panel__right']//button[./child::*[text()='Сохранить']]"/>
+            <Collection name="Фильтр.Сохраненные фильтры"
+                        locator="//*[@class='filters-panel__right']//div[@class='-list']//li">
+                <Button name="Фильтр.Выбрать фильтр" locator="./*[@class='link']"/>
+                <Button name="Фильтр.Удалить фильтр" locator="./*[@class='delete']"/>
+            </Collection>
+            <StaticText name="Фильтр.Список пуст"
+                        locator="//*[@class='filters-panel__right']//*[text()='Список пуст']"/>
+        </Page>
+    <!--    конец служебных блоков-->
+
+    <Page name="Блок Системные сообщения">
+        <StaticText name="Заголовок Системные сообщения" locator="//*[@class='ant-drawer-title']"/>
+        <TextInput name="Поиск" locator="//*[contains(@class, 'menu-notifications')]//input"/>
+        <Button name="Закрыть Системные сообщения" locator="//*[@class='ant-drawer-close']"/>
+        <Button name="Кнопка Лупа"
+                locator="//*[contains(@class, 'menu-notifications')]//*[contains(@class, 'anticon-search')]"/>
+        <Collection name="Системные сообщения" locator="//*[contains(@class, 'ant-list-items')]">
+            <StaticText name="Дата создания" locator=".//*[contains(@class, 'cell-view-module_layout')]"/>
+            <StaticText name="Время создания" locator=".//*[contains(@class, 'cell-view-module_description')]"/>
+            <Button name="Краткое описание" locator=".//*[contains(@class, 'link-button-module_layout')]"/>
+
+
+<!--            <StaticText name="Дата создания" locator="./*[@class='created']"/>-->
+<!--            <Button name="Краткое описание" locator="./*[@class='short-text']"/>-->
+            <Link name="Скачать файл"
+                  locator="//*[contains(@class, 'ant-list-items')]/li[1]//*[contains(@aria-label, 'download')]"/>
+            <Button name="Открыть название файла"
+                    locator="//*[contains(@class, 'ant-list-items')]/li[1]//*[contains(@class, 'dropdown')]"/>
+            <StaticText name="Название файла" locator="//*[contains(@class, 'ant-dropdown-menu-title-content')]"/>
+        </Collection>
+    </Page>
+
+    <Page name="Блок Модальное окно">
+        <StaticText name="Заголовок модального окна" locator="//*[contains(@class, 'dialog-module_title')]"/>
+        <StaticText name="Контент модального окна" locator="//*[contains(@class, 'dialog-module_content')]"/>
+        <StaticText name="Выбрано атрибутов" locator="//*[contains(@class, 'checkedInfo')]"/>
+        <Collection name="Атрибуты Экспорт" locator="//*[contains(@class, 'tableTreeItem')][not(contains(@class, 'level-1'))][count(./div)=1]">
+            <StaticText name="Атрибут" locator="./"/>
+            <StaticText name="Отмеченный чекбокс"
+                        locator=".//*[./child::*[@type='checkbox']][contains(@class, 'checked')]"/>
+            <StaticText name="Пустой чекбокс"
+                        locator=".//*[./child::*[@type='checkbox']][not(contains(@class, 'checked'))]"/>
+        </Collection>
+        <Button name="Модальное окно. Экспортировать все поля" locator="//*[@title='Экспортировать все поля']"/>
+        <Button name="Модальное окно. Информация о выбранных полях" locator="//*[@class='checked-info']/*"/>
+        <Button name="Модальное окно. Развернуть все" locator="//button[./*[text()='Развернуть все']]"/>
+        <Button name="Модальное окно. Свернуть все" locator="//button[./*[text()='Свернуть все']]"/>
+        <Collection name="Модальное окно. Группа 1го уровня" locator="//*[contains(@class, 'level-1')]">
+            <Button name="Свернуть/Развернуть группу 1го уровня" locator="./*/*[contains(@class,'expandButton')]/span"/>
+            <CheckBox name="Чекбокс группы 1го уровня" locator="./*/*[contains(@class,'checker')]/*/*"/>
+            <StaticText name="Заголовок группы 1го уровня" locator="./*/*[contains(@class,'title')]"/>
+        </Collection>
+        <Collection name="Модальное окно. Группа 2го уровня" locator="//*[contains(@class, 'level-2')]">
+            <Button name="Свернуть/Развернуть группу 2го уровня" locator="./*/*[contains(@class,'expandButton')]/span"/>
+            <CheckBox name="Чекбокс группы 2го уровня" locator="./*/*[contains(@class,'checker')]/*/*"/>
+            <StaticText name="Заголовок группы 2го уровня" locator="./*/*[contains(@class,'title')]"/>
+        </Collection>
+        <Collection name="Группа 2го уровня:"
+                    locator="//*[./child::*[translate(text(), 'абвгдеёжзиклмнопрстуфхцчшщьыъэюя', 'АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ')='#{Название_группы_1го_уровня}']]/following-sibling::*[contains(@class, 'level-2')]">
+            <!--locator="//*[./child::*[text()='#{Название_группы_1го_уровня}']]/following-sibling::*[contains(@class, 'level-2')]">-->
+            <Button name="Свернуть/Развернуть группу 2го уровня"
+                    locator="./*/*[contains(@class,'expandButton')]/span"/>
+            <CheckBox name="Чекбокс группы 2го уровня" locator="./*/*[contains(@class,'checker')]/*/*"/>
+            <StaticText name="Заголовок группы 2го уровня" locator="./*/*[contains(@class,'title')]"/>
+        </Collection>
+        <Button name="Экспортировать Disabled"
+                locator="//*[contains(text(), 'Экспортировать')]/parent::button[@disabled]"/>
+        <StaticText name="Обработано записей" locator="//*[@class='import-info']/*[@class]"/>
+        <StaticText name="Записей с ошибками" locator="//*[@class='import-info']/*[not(@class)]"/>
+        <Button name="Добавить файл для импорта" locator="//*[@class='action-button remove-file']/*"/>
+        <Collection name="Модальное окно. Импортируемые файлы" locator="//*[contains(@class,'frameLayout')]">
+            <TextInput name="Загрузить файл" locator=".//input[@type='file']"/>
+            <TextInput name="Имя импортируемого файла" locator=".//input[contains(@class,'ant-input')]"/>
+            <Button name="Удалить файл" locator=".//*[@class='action-button add-file']"/>
+        </Collection>
+        <StaticText name="Модальное окно. Сообщение об ошибке"
+                    locator="//*[@class='init-error-item']|//*[contains(text(), 'Exception') and @class='result-status']"/>
+        <Button name="Модальное окно. Отменить импорт" locator="//*[text()='Отменить импорт']/parent::button"/>
+    </Page>
+
+    <Page name="Блок Строки таблицы">
+        <Collection name="Строки таблицы" locator="//table/tbody/tr">
+            <StaticText name="Столбец Нет данных" locator="./td[1]"/>
+            <CheckBox name="Столбец Чекбокс" locator=".//label[contains(@class, 'checkbox')]"/>
+            <StaticText name="Столбец Код" locator="./td[3]"/>
+            <StaticText name="Столбец Наименование" locator="./td[4]"/>
+            <StaticText name="Столбец Справочник" locator="./td[5]"/>
+            <StaticText name="Столбец Действие" locator="./td[6]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[7]"/>
+            <StaticText name="Столбец Тип события" locator="./td[8]"/>
+            <StaticText name="Столбец Класс обработчика" locator="./td[9]"/>
+            <StaticText name="Столбец Приложение" locator="./td[10]"/>
+        </Collection>
+        <Collection name="Строки таблицы для фильтров" locator="//table/tbody/tr">
+            <StaticText name="Столбец Нет данных" locator="./td[1]"/>
+            <CheckBox name="Столбец Чекбокс" locator=".//label[contains(@class, 'checkbox')]"/>
+            <StaticText name="Столбец Код" locator="./td[3]"/>
+            <StaticText name="Столбец Наименование" locator="./td[4]"/>
+            <StaticText name="Столбец Справочник" locator="./td[5]"/>
+        </Collection>
+    </Page>
+
+
+<!-- начало блока плоских справочников-->
+        <Page name="Универсальная страница Пользовательские справочники">
+            <StaticText name="Заголовок" locator="//*[@class='ant-breadcrumb-link']"/>
+            <StaticText name="Панель Меню"
+                        locator="//div[@class='ant-drawer-content-wrapper' and @style='width: auto;']"/>
+            <Block name="Верхнее меню"/>
+            <Block name="Кнопки навигации"/>
+            <Collection name="Элементы"
+                        locator="//div[@aria-hidden='false']//div[@class='ant-row']/*[contains(@class,'ant-col')]/*[contains(@class,'wrapper')]">
+                <Button name="Элемент" locator=".//*[@data-element-priority]"/>
+                <StaticText name="Элемент_Имя поля" locator=".//label"/>
+                <StaticText name="Элемент_Обязательно заполнено" locator="."/>
+            </Collection>
+            <Collection name="Разделы" locator="//*[./child::*[contains(text(),'Раздел ')]]">
+                <Button name="Раздел" locator="./div"/>
+            </Collection>
+            <StaticText name="Выбранный раздел"
+                        locator="//*[./child::*[contains(text(),'Раздел ')] and @aria-selected='true']"/>
+            <StaticText name="Ошибка приложения" locator="//*[contains(text(),'Произошла ошибка приложения')]"/>
+            <Collection name="Заголовки таблицы" locator="//table/thead/tr/th">
+                <StaticText name="Заголовок таблицы" locator="."/>
+            </Collection>
+            <Button name="Время обновления"
+                    locator="//div[@class='header-cell-container']/*[contains(text(),'Время обновления') or contains(text(),'Время правки') or contains(text(),'Время корректировки')]"/>
+            <Button name="Время обновления по убыванию"
+                    locator="//div[@class='header-cell-container']/*[contains(text(),'Время обновления') or contains(text(),'Время правки') or contains(text(),'Время корректировки')]/..//*[contains(@class,'icon-sort-asc')]"/>
+        </Page>
+
+    <!-- конец блока плоских справочников-->
+
+    <Page name="test">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[@class='ant-breadcrumb-link' and text()='Результаты импорта']"/>
+        <Block name="Быстрый поиск"/>
+        <Block name="Блок Пагинация"/>
+    </Page>
+
+</Pages>

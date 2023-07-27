@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Настройки формы ввода">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Настройки UI карточки записи']"/>
+
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <Button name="Настройки формы ввода" locator="//*[@class='ant-breadcrumb']/span[2]/span/a"/>
+
+        <TextInput name="Справочник" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Справочник']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <Button name="Вкладки" template="RndButton"/>
+        <TextInput name="Наименование вкладки" locator="//div[text()='Наименование вкладки']/following-sibling::div//input"/>
+        <Collection name="Строки таблицы вкладок" locator="//table/tbody/tr">
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Наименование вкладки" locator="./td[4]"/>
+        </Collection>
+
+        <Button name="Действия" template="RndButton"/>
+        <Collection name="Строки таблицы действия" locator="//table/tbody/tr">
+            <StaticText name="Столбец Страница" locator="./td[3]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Действие" locator="./td[4]"/>
+        </Collection>
+
+
+    </Page>
+</Pages>

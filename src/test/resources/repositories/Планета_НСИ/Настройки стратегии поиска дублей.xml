@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Настройки стратегии поиска дублей">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Стратегии поиска дублей']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <TextInput name="Таблица1" locator="//*[normalize-space(text())='Таблица']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+
+        <TextInput name="Вывод поля в наименование записи" locator="//*[normalize-space(text())='Вывод поля в наименование записи']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Количество отображаемых записей в форме поиска по умолчанию"
+                   locator="//div[text()='Количество отображаемых записей в форме поиска по умолчанию']/following-sibling::div//input"/>
+
+        <TextInput name="Вес полного совпадения"  locator="//div[text()='Вес полного совпадения']/following-sibling::div//input"/>
+        <TextInput name="Вес частичного совпадения"  locator="//div[text()='Вес частичного совпадения']/following-sibling::div//input"/>
+
+        <Collection name="Строки таблицы в форме создания" locator="//table/tbody/tr">
+            <StaticText name="Столбец Признак нечеткого поиска" locator="./td[4]"/>
+            <StaticText name="Столбец Вес при частичном совпадении" locator="./td[6]"/>
+            <StaticText name="Столбец Вес при полном совпадении" locator="./td[5]"/>
+            <StaticText name="Столбец Отображаемое поле" locator="./td[2]"/>
+            <StaticText name="Столбец Поле" locator="./td[3]"/>
+        </Collection>
+
+
+
+    </Page>
+</Pages>

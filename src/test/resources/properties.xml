@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Properties xmlns="http://chameleon.ibs-qa.ru/schema/properties">
+    <Text name="applicationUrl" defaultValue="https://dev.x-dev.us/"/>
+    <List name="execute" defaultValue="local" label="Выполнение браузеров на хосте" required="true">
+        <Item value="selenoid"/>
+        <Item value="local"/>
+    </List>
+    <CheckBox name="headless" defaultValue="false" label="Включить режим браузера без GUI"/>
+    <List name="remote_url" defaultValue="http://10.28.4.205:4444/wd/hub" label="Адрес сервиса SELENOID"
+          required="true">
+        <Item value="http://10.28.4.205:4444/wd/hub"/>
+        <Item value="http://10.28.4.206:4444/wd/hub"/>
+        <Item value="http://10.28.4.204:4444/wd/hub"/>
+        <Item value="http://127.0.0.1:4444/wd/hub"/>
+    </List>
+    <List name="browser_version" defaultValue="98.0" label="Версия браузера SELENOID" required="true">
+        <Item value="98.0"/>
+        <Item value="99.0"/>
+        <Item value="108.0"/>
+    </List>
+    <List name="window_size" defaultValue="1920x1080" label="Размер рабочего стола SELENOID" required="true">
+        <Item value="1920x1080"/>
+        <Item value="900x600"/>
+    </List>
+    <List name="session_timeout" defaultValue="1m" label="Время жизни контейнера SELENOID если нет запросов"
+          required="true">
+        <Item value="5m"/>
+        <Item value="1m"/>
+        <Item value="10s"/>
+    </List>
+    <CheckBox name="enable_VNC" defaultValue="false" label="Включить GUI отображение рабочего стола SELENOID"/>
+    <CheckBox name="enable_video" defaultValue="false" label="Включить запись видео теста в SELENOID"/>
+    <List name="download_folder" defaultValue="target" label="Папка для загрузки скачиваемых файлов" required="true">
+        <Item value="target"/>
+        <Item value="target\download"/>
+    </List>
+</Properties>

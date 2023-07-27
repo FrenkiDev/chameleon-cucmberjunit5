@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Подписки">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Подписки']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <TextInput name="Приложение" locator="//*[contains(text(),'Приложение')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Атрибуты типа события" locator="//div[text()='Атрибуты типа события']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Имя класса" locator="//div[text() = 'Имя класса']/parent::*//input"/>
+
+        <Collection name="Строки таблицы для подписок" locator="//table/tbody/tr">
+            <StaticText name="Столбец Нет данных" locator="./td[1]"/>
+            <CheckBox name="Столбец Чекбокс" locator=".//label[contains(@class, 'checkbox')]"/>
+            <StaticText name="Столбец Код" locator="./td[3]"/>
+            <StaticText name="Столбец Действие" locator="./td[4]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[5]"/>
+            <StaticText name="Столбец Справочник" locator="./td[6]"/>
+            <StaticText name="Столбец Тип события" locator="./td[7]"/>
+        </Collection>
+
+    </Page>
+</Pages>

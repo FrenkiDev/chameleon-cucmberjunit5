@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Настройки формы онтологии">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Настройки UI онтологии']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <TextInput name="Справочник" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Справочник']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+
+        <Button name="Действия" template="RndButton"/>
+        <Button name="Добавить действие" locator="//span[contains(text(),'Добавить')]/.."/>
+        <Collection name="Строки таблицы действия" locator="//table/tbody/tr">
+            <StaticText name="Столбец Действие" locator="./td[4]"/>
+            <StaticText name="Столбец Приоритет" locator="./td[2]"/>
+            <StaticText name="Столбец Страница" locator="./td[3]"/>
+        </Collection>
+
+        <Page name="Форма онтологии">
+            <Block name="Верхнее меню"/>
+            <Block name="Быстрый поиск"/>
+            <Block name="Кнопки навигации"/>
+            <Block name="Настройки меню навигации"/>
+            <Button name="Список атрибутов" locator="//span[text() ='Список атрибутов']"/>
+            <Button name="Дерево классов" locator="//span[text() ='Дерево классов']"/>
+            <Button name="Добавить класс" locator="//span[text()='Добавить класс']/parent::button"/>
+            <TextInput name="Название" locator="//*[@id ='attributeName']"/>
+            <TextInput name="КодПоля" locator="//*[@id ='attributeCode']"/>
+            <TextInput name="Длина" locator="//*[@class='ant-input' and @type ='number']"/>
+            <Button name="Тип данных"
+                    locator="//div[@unselectable ='on']/parent::div[@class = 'ant-select-selection__rendered']"/>
+            <TextInput name="code" locator="//*[@data-element-field='code']"/>
+            <TextInput name="name" locator="//*[@data-element-field='name']"/>
+            <Button name="Текст" locator="//*[contains(text(),'Текст')]/parent::li"/>
+            <Button name="Сохранить" locator="//span[text() ='Сохранить']/parent::button[@class = 'ant-btn actions-save']"/>
+            <StaticText name="Название атрибута" locator="//div[@class = 'name' and text() = '#{Название_атрибута}']"/>
+            <Button name="Новый класс" locator="//span[@class ='title']/span[contains(text(),'#{Название_класса}')]"/>
+            <Button name="Новый атрибут" locator="//td[contains(text(),'#{Название_атрибута}')]"/>
+            <Button name="Изменить" locator="//span[text() = ' Изменить']/parent::button"/>
+            <Button name="Добавить атрибут" locator="//span[text() = 'Добавить атрибут']/parent::button"/>
+            <TextInput name="ID.Атрибут" locator="//*[contains(@class,'dropdown-list')]"
+                       customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+            <StaticText name="Код_атрибута"
+                        locator="//td[@class = 'ant-table-column-has-actions ant-table-column-has-sorters'][1]"/>
+
+        </Page>
+
+
+    </Page>
+</Pages>

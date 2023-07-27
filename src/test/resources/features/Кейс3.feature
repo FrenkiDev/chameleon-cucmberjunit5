@@ -1,6 +1,6 @@
 # language: ru
 
-@TEST_FULL @TEST_3
+@TEST_FULL @TEST_3 @FULL_REGRESS
 Функция: Кейс 3
 
   Сценарий: Кейс 3 Тест 1

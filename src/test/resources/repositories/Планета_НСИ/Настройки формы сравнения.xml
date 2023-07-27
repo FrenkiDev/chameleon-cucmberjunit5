@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Настройки формы сравнения">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Настройки формы сравнения']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <TextInput name="Поле выводимое в заголовок" locator="//*[contains(text(),'Поле выводимое в заголовок')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Справочник" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'abs-view-module_contentHide'))]//*[normalize-space(text())='Справочник']/..//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <Button name="Вкладки" template="RndButton"/>
+        <Button name="Группа элементов" template="RndButton"/>
+        <Button name="Элементы UI" template="RndButton"/>
+        <TextInput name="Исходное поле" locator="//*[contains(text(),'Исходное поле')]/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+        <TextInput name="Наименование группы" locator="//*[contains(text(),'Наименование группы')]/following-sibling::div//input"/>
+        <TextInput name="Наименование вкладки" locator="//*[contains(text(),'Наименование вкладки')]/following-sibling::div//input"/>
+        <TextInput name="Вкладки.Приоритет" locator="//div[contains(@class,'bordered')]//div[contains(@class,'bordered-module_content_') and not(contains(@class,'Hide'))]//*[normalize-space(text())='Приоритет']/following-sibling::div//input"/>
+
+    </Page>
+</Pages>

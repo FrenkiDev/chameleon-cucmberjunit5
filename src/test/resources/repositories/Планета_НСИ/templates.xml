@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Templates xmlns="http://chameleon.ibs-qa.ru/schema/templates">
+    <Template name="Button" locator=".//*[contains(@class, 'btn') and normalize-space(text())='%1$s']"/>
+    <Template name="Link" locator=".//a[normalize-space(text())='%1$s']"/>
+    <Template name="TextInput" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'view-module_contentHide'))]//*[normalize-space(text())='%1$s']/following-sibling::div//input[@type='text']"/>
+    <!--<Template name="TextInput" locator=".//label[normalize-space(text())='%1$s']/following-sibling::input"/> -->
+    <Template name="CheckBox" locator=".//input[@type='checkbox' and ./parent::label[normalize-space(text())='%1$s']]"/>
+    <Template name="VerifyTextInput" locator=".//*[./child::*[normalize-space(text())='%1$s']]/ancestor::div[contains(@class, 'wrapper')]//input"/>
+    <Template name="ComboBoxWithSearchInput" locator=".//*[./child::*[normalize-space(text())='%1$s']]/ancestor::*[contains(@class, 'wrapper')]//*[contains(@class, 'dropdown')]"/>
+    <Template name="StaticText" locator="//*[contains(text(), '%1$s') and @class='result-status']"/>
+    <Template name="RndButton" locator="//*[text() = '%1$s']"/>
+    <Template name="Number" locator="//div[contains(@class,'tabs-view-module_content') and not(contains(@class,'view-module_contentHide'))]//*[normalize-space(text())='%1$s']/following-sibling::div//input[@type='text']"/>
+
+</Templates>

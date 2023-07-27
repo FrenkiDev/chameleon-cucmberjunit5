@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Плоский справочник">
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Верхнее меню"/>
+        <Block name="Быстрый поиск"/>
+        <Block name="Кнопки навигации"/>
+        <Block name="Блок Пагинация"/>
+        <Block name="Настройки меню навигации"/>
+        <Block name="Блок Модальное окно"/>
+        <Button name="Потверждение удаления" locator="//button[./child::*[@aria-label='check']]"/>
+        <Button name="Случайный пользовательский справочник"
+                locator="//*[@class = 'nsi-app-navigation-panel__head-title' and contains(text(), 'Пользовательские справочники')]/following-sibling::*"/>
+        <TextInput name="Код_справочника" locator="//div[text() = '#{Текст_код}']/parent::*//input"/>
+        <TextInput name="Имя_справочника" locator="//div[text() = '#{Текст_имя}']/parent::*//input"/>
+    </Page>
+</Pages>

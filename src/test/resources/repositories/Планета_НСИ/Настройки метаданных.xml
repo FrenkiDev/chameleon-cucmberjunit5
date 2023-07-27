@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+    <Page name="Настройки метаданных">
+        <StaticText name="Заголовок" isLoaded="true"
+                    locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Таблицы']"/>
+        <Block name="Служебные блоки"/>
+        <Block name="Блок Системные сообщения"/>
+        <Block name="Блок фильтров"/>
+        <Block name="Блок Строки таблицы"/>
+        <Block name="Блок Модальное окно"/>
+        <Block name="Меню"/>
+        <Block name="Блок Пагинация"/>
+
+        <Button name="Создать формы" template="RndButton"/>
+        <TextInput name="Поля" template="RndButton"/>
+        <Button name="Основные" locator="//*[@data-tab-index='1']"/>
+        <Button name="Сохранение формы" locator="//*[@class='menu menu-right']/*[@id='std-save']"/>
+        <StaticText name="Описание2" locator="//*/td[4]/span/span"/>
+        <Button name="Развернуть список типов справочников" locator="//*[@class = 'ant-select-arrow']"/>
+        <Button name="Плоская" locator="//li/span[contains(text(),'Плоская')]"/>
+        <Button name="Импорт настроек справочника" locator="//*[contains(@class,'menu-layout-module_item') and text() ='Импорт настроек справочника']"/>
+        <TextInput name="Поле ввода пути к файлу" locator="//*[@type = 'file']"/>
+        <StaticText name="Подтверждение завершения импорта" locator="//div[text()='Импорт завершен!']"/>
+        <Button name="Импорт метаданных" locator="//*[contains(@class,'actions-panel-module_elementContext')]"/>
+        <TextInput name="Поля.Код.Поле для ввода"
+                   locator="//div[contains(@class,'tabs-view-module_content')][2]//div[text()='Код']/following-sibling::div//input"/>
+        <TextInput name="Поля.Наименование.Поле для ввода"
+                   locator="//div[contains(@class,'tabs-view-module_content')][2]//div[text()='Наименование']/following-sibling::div//input"/>
+        <TextInput name="Поля.Описание.Поле для ввода"
+                   locator="//div[contains(@class,'tabs-view-module_content')][2]//div[text()='Описание']/following-sibling::div//input"/>
+        <TextInput name="Поля.Тип.Выпадающий список"
+                   locator="//div[contains(@class,'tabs-view-module_content')][2]//div[text()='Тип']/following-sibling::div//div[@class='ant-select-selector']"
+                   customType="ru.ibs.planeta.ui.webelements.Dropdown"/>
+        <TextInput name="Поля.Длина.Поле для ввода"
+                   locator="//div[contains(@class,'tabs-view-module_content')][2]//div[text()='Длина']/following-sibling::div//input"/>
+        <TextInput name="Поля.Таблица-ссылка.Поле для ввода"
+                   locator="//div[text()='Таблица-ссылка']/following-sibling::div//input"
+                   customType="ru.ibs.planeta.ui.elements.ComboBoxWithSearchInput"/>
+    </Page>
+</Pages>

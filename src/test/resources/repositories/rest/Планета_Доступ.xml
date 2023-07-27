@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+  default-lazy-init="true"
+  default-autowire="byName">
+
+  <bean name="endpointАвторизация" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+    <property name="urls">
+      <map>
+        <entry key="Главная_страница" value=""/>
+        <entry key="Информация_о_пользователе" value="gw/user-info"/>
+        <entry key="Сервис_OAuth2" value="oauth2/login?redirectUrl=%2F"/>
+        <entry key="Текущая_тема" value="access_api/theme/actual"/>
+        <entry key="Страница_авторизации" value="${redirect_scheme}://${redirect_host}/access/realms/${REAL_ID}/login/process"/>
+      </map>
+    </property>
+    <property name="headerParams">
+      <map>
+        <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+        <entry key="Upgrade-Insecure-Requests" value="1"/>
+        <entry key="DNT" value="1"/>
+        <entry key="Accept-Encoding" value="gzip, deflate"/>
+        <entry key="User-Agent"
+          value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+        <entry key="Accept"
+          value="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"/>
+        <entry key="Referer" value="${URI_SSO_OAUTH}"/>
+        <entry key="Origin" value="${redirect_scheme}://${redirect_host}"/>
+        <entry key="Content-Type" value="application/x-www-form-urlencoded"/>
+      </map>
+    </property>
+  </bean>
+  <bean name="endpointГлавнаяСтраница" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+    <property name="urls">
+      <map>
+        <entry key="${scheme}://${host}:${port}/" value="${scheme}://${host}:${port}/"/>
+        <entry key="Информация_о_пользователе" value="gw/user-info"/>
+        <entry key="Текущая_тема" value="access_api/theme/actual"/>
+      </map>
+    </property>
+    <property name="headerParams">
+      <map>
+        <entry key="Sec-Fetch-Mod" value="cors"/>
+        <entry key="Referer" value="${scheme}://${host}:${port}/"/>
+        <entry key="Sec-Fetch-Site" value="same-origin"/>
+        <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+        <entry key="ClientVersion" value="2.5.0-alpha.0"/>
+        <entry key="Accept" value="application/json, text/plain, */*"/>
+        <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+        <entry key="User-Agent" value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+        <entry key="Sec-Fetch-Dest" value="empty"/>
+      </map>
+    </property>
+  </bean>
+  <bean name="endpointПользователи" class="ru.ibs.planeta.rest.EndpointWithoutDataPoolImpl">
+    <property name="urls">
+      <map>
+        <entry key="access_apiUsers" value="access_api/users"/>
+        <entry key="access_apiUsersID" value="access_api/users/${USER_ID}"/>
+        <entry key="access_apiUsersIDGroups" value="access_api/users/${USER_ID}/groups"/>
+        <entry key="access_apiUsersIDObjects" value="access_api/users/${USER_ID}/objects"/>
+        <entry key="access_apiUsersIDSubjects" value="access_api/users/${USER_ID}/subjects"/>
+        <entry key="access_apiUsersIDSystemRole" value="access_api/users/${USER_ID}/system-role"/>
+        <entry key="access_apiUsersIDSystemRoleFilter"
+          value="access_api/users/${USER_ID}/system-roles/filter"/>
+        <entry key="access_apiUsersAnonymous" value="access_api/users/anonymous"/>
+        <entry key="access_apiUsersChangeLockId" value="access_api/users/change/lock?id="/>
+        <entry key="access_apiUsersCreateAndSend" value="access_api/users/create-and-send"/>
+        <entry key="access_apiUsersExpireExpireDate" value="access_api/users/expire/expire-date"/>
+        <entry key="access_apiUsersExpireStartDate" value="access_api/users/expire/start-date"/>
+        <entry key="access_apiUsersFilter" value="access_api/users/filter"/>
+        <entry key="access_apiUsersResetPasswordId" value="access_api/users/reset-password?id="/>
+        <entry key="access_apiUsersUpdateAndSend" value="access_api/users/update-and-send"/>
+        <entry key="access_apiUsersUpdateGroups" value="access_api/users/update/groups"/>
+        <entry key="access_apiUsersIdAdditionalAttributes"
+          value="/access_api/users/${USER_ID}/additional-attributes"/>
+      </map>
+    </property>
+    <property name="headerParams">
+      <map>
+        <entry key="Accept" value="application/json, text/plain, */*"/>
+        <entry key="Accept-Encoding" value="gzip, deflate, br"/>
+        <entry key="Accept-Language" value="ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"/>
+        <entry key="Content-Type" value="application/json"/>
+        <entry key="ClientVersion" value="2.4.0-alpha.0"/>
+        <entry key="Referer" value="${BASE_URL}"/>
+        <entry key="Sec-Fetch-Dest" value="empty"/>
+        <entry key="Sec-Fetch-Mode" value="cors"/>
+        <entry key="Sec-Fetch-Site" value="same-origin"/>
+        <entry key="User-Agent"
+          value="Mozilla/5.0 (X11; Linux x86_64; rv:105.0) Gecko/20100101 Firefox/105.0"/>
+      </map>
+    </property>
+  </bean>
+  <bean name="endpointПользователиПроверкаРолевойМодели" class="ru.ibs.planeta.rest.EndpointWithDataPoolImpl">
+    <property name="endpoint" ref="endpointПользователи"/>
+    <property name="request">
+      <map>
+        <entry key="создать_пользователя" value="создать"/>
+      </map>
+    </property>
+    <property name="response">
+      <map>
+        <entry key="создать_пользователя" value="создать"/>
+      </map>
+    </property>
+  </bean>
+</beans>

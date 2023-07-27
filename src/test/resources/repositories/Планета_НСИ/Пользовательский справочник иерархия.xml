@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+<Page name="Иерархия.autotest">
+    <StaticText name="Заголовок" isLoaded="true"
+                locator="//*[contains(@class,'captionTitle') and contains(text(),'Иерархия.autotest')]"/>
+    <Block name="Служебные блоки"/>
+    <Block name="Блок Системные сообщения"/>
+    <Block name="Блок фильтров"/>
+    <Block name="Блок Модальное окно"/>
+    <Block name="Меню"/>
+    <Block name="Блок Пагинация"/>
+
+    <Button name="Удалить.Корзина" locator="//div[contains(@class,'caption')]//span[@aria-label='delete']/.."/>
+
+    <Collection name="Список записей" locator="//*[contains(@class,'object-tree-module')]">
+        <CheckBox name="Чекбокс" locator=".//label[contains(@class, 'checkbox')]"/>
+        <StaticText name="Код записи" locator=".//*[contains(@class,'treeRowCode')]"/>
+        <StaticText name="Имя записи" locator=".//*[contains(@class,'treeRowName')]"/>
+    </Collection>
+</Page>
+</Pages>

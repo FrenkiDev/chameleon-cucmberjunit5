@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+
+<Page name="Настройки меню навигации">
+    <StaticText name="Заголовок" isLoaded="true"
+                locator="//*[contains(@class,'table-page-module_captionTitle') and text()='Конфигурация таблицы редактирования списка страниц']"/>
+
+    <Block name="Служебные блоки"/>
+    <Block name="Блок Строки таблицы"/>
+    <Block name="Блок Системные сообщения"/>
+    <Block name="Блок фильтров"/>
+    <Block name="Блок Модальное окно"/>
+    <Block name="Меню"/>
+    <Block name="Блок Пагинация"/>
+
+    <Button name="Полномочия" template="RndButton"/>
+    <TextInput name="Полномочия.Поле для ввода"
+               locator="//div[text()='Полномочия']/following-sibling::div"
+               customType="ru.ibs.planeta.ui.elements.Dropdown"/>
+    <StaticText name="Полномочия.Значение" locator="//div[text()='Полномочия']/following-sibling::div//span[contains(@class,'item')]"/>
+    <Button name="Настройки меню навигации" locator="//*[@class='ant-breadcrumb']/span[2]/span/a"/>
+
+</Page>
+</Pages>
